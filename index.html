@@ -720,13 +720,12 @@ body.on-dark-slide .nav-dot.active { background: var(--gold); opacity: 1; }
   gap: clamp(0.85rem, 1.5vw, 1.5rem);
   margin-top: 1rem;
   margin-bottom: clamp(1rem, 2vh, 1.6rem);
-  flex: 1;                       /* grow to take available space */
-  min-height: clamp(180px, 28vh, 280px);
 }
-.food-card {
-  display: flex; flex-direction: column;
-}
-.food-card p { margin-top: auto; }
+
+/* Vertically center the Food slide so cards + callout sit in the middle
+   of the viewport, balancing white space top/bottom */
+.food-slide .slide-content { justify-content: center; }
+.food-slide .opener { margin-top: 0; }
 .food-card {
   background: #fff;
   border: 1px solid var(--line);
@@ -1553,7 +1552,7 @@ body.on-dark-slide .nav-dot.active { background: var(--gold); opacity: 1; }
 
 
 <!-- 08 — SATURDAY FOOD -->
-<section class="slide" data-title="Food">
+<section class="slide food-slide" data-title="Food">
   <div class="slide-content">
     <div class="opener reveal">
       <div class="chapter-num">06</div>
