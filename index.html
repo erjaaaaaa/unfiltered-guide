@@ -1,1671 +1,1714 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0E4391">
-<title>UNFILTERED · Natural Wine Festival · Rīga 2026</title>
-<meta name="description" content="The first UNFILTERED Natural Wine Festival — Rīga, 30 May 2026. Less pretension, more substance.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNFILTERED · Welcome Guide · Rīga 2026</title>
 
+<!-- Brand fonts: Alan Sans + JetBrains Mono (per UNFILTERED Brand Book) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-/* =================================================================
-   UNFILTERED — Festival Landing
-   Per Brand Book Edition 01 · 2026:
-   Type:    Alan Sans (300 → 900) · JetBrains Mono (tags, UPPERCASE)
-   Colour:  Cobalt 60% · Paper 25% · Deep 8% · Gold 3% · Tint 3% · Ink 1%
-   Tracking: Display −3 to −4.5% · Body −0.5% · Tags +12-18%
-   Voice:   Less pretension. Plainspoken over poetic.
-   ================================================================= */
+/* =========================================================================
+   UNFILTERED · WELCOME GUIDE — interactive slide deck
+   Brand: Cobalt #0E4391 · Deep #082A5B · Paper #F4EFE3 · Gold #C8A96A
+   Type:  Alan Sans (display + body) · JetBrains Mono (tags + metadata)
+   ========================================================================= */
 
-:root{
-  --cobalt:#0E4391;
-  --deep:#082A5B;
-  --paper:#F4EFE3;
-  --paper-2:#EBE3D0;
-  --gold:#C8A96A;
-  --tint:#D6E6FF;
-  --ink:#1F1F1F;
-  --ink-2:#3a3a3a;
-  --muted:#6b6557;
-  --line:rgba(14,67,145,.18);
-  --line-soft:rgba(31,31,31,.12);
-  --line-on-blue:rgba(244,239,227,.18);
+:root {
+  /* Brand palette */
+  --cobalt:  #0E4391;
+  --deep:    #082A5B;
+  --paper:   #F4EFE3;
+  --gold:    #C8A96A;
+  --tint:    #D6E6FF;
+  --ink:     #1F1F1F;
+  --muted:   #5a5a5a;
+  --line:    rgba(14, 67, 145, 0.15);
+  --line-on-blue: rgba(255, 255, 255, 0.18);
 
-  --f-sans:'Alan Sans', ui-sans-serif, system-ui, sans-serif;
-  --f-mono:'JetBrains Mono', ui-monospace, monospace;
+  /* Typography stacks */
+  --font-display: 'Alan Sans', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, monospace;
 
-  --max:1380px;
-  --pad:clamp(1.25rem, 4vw, 4rem);
+  /* Sizes — all clamp() for viewport scaling */
+  --title-size:    clamp(2rem, 6vw, 5rem);
+  --h2-size:       clamp(1.5rem, 3.5vw, 3rem);
+  --h3-size:       clamp(1.1rem, 1.8vw, 1.5rem);
+  --body-size:     clamp(0.85rem, 1.1vw, 1.05rem);
+  --small-size:    clamp(0.7rem, 0.85vw, 0.85rem);
+  --tag-size:      clamp(0.6rem, 0.75vw, 0.75rem);
 
-  --ease:cubic-bezier(.16,1,.3,1);
-}
+  /* Spacing */
+  --slide-padding: clamp(1.5rem, 4vw, 4rem);
+  --content-gap:   clamp(0.5rem, 1.5vw, 1.75rem);
 
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{
-  font-family:var(--f-sans);
-  background:var(--paper);
-  color:var(--ink);
-  font-weight:400;
-  -webkit-font-smoothing:antialiased;
-  letter-spacing:-0.005em;
-  overflow-x:hidden;
-}
-img,svg{display:block;max-width:100%}
-a{color:inherit;text-decoration:none}
-button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
-
-::selection{background:var(--cobalt);color:var(--paper)}
-
-/* ---------- Grain overlay ---------- */
-body::before{
-  content:"";
-  position:fixed;inset:0;
-  pointer-events:none;
-  z-index:1000;
-  opacity:.18;
-  mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  /* Motion */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur:  0.7s;
 }
 
-/* ============================
-   NAV
-   ============================ */
-.nav{
-  position:fixed;top:0;left:0;right:0;z-index:50;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:clamp(.85rem,1.6vw,1.2rem) var(--pad);
-  font-family:var(--f-mono);
-  font-size:.72rem;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:var(--cobalt);
-  background:rgba(244,239,227,0);
-  backdrop-filter:blur(0);
-  -webkit-backdrop-filter:blur(0);
-  transition:color .35s ease, background .35s ease, backdrop-filter .35s ease, border-color .35s ease;
-  border-bottom:1px solid transparent;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { height: 100%; overflow-x: hidden; }
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
-.nav.scrolled{
-  background:rgba(244,239,227,.78);
-  backdrop-filter:blur(14px) saturate(140%);
-  -webkit-backdrop-filter:blur(14px) saturate(140%);
-  border-bottom-color:var(--line-soft);
-}
-.nav.on-dark{color:var(--paper)}
-.nav.on-dark.scrolled{
-  background:rgba(8,42,91,.6);
-  border-bottom-color:rgba(244,239,227,.12);
-}
-.nav .brand{display:flex;align-items:center;gap:.7rem;font-weight:600}
-.nav .brand .dot{
-  width:.5rem;height:.5rem;border-radius:50%;
-  background:var(--gold);
-  box-shadow:0 0 0 3px rgba(200,169,106,.18);
-}
-.nav .links{display:flex;gap:1.6rem}
-.nav .links a{position:relative;font-weight:500}
-.nav .links a:hover{color:var(--gold)}
-.nav .cta{
-  padding:.55rem 1rem;border:1px solid currentColor;border-radius:999px;
-  font-weight:600;
-  transition:background .3s,color .3s;
-}
-.nav .cta:hover{background:var(--gold);color:var(--deep);border-color:var(--gold)}
-@media (max-width:780px){
-  .nav .links{display:none}
+body {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.005em;
 }
 
-/* ============================
-   HERO — Cobalt 60% canvas with the wordmark as the personality
-   ============================ */
-.hero{
-  position:relative;
-  min-height:100vh;
-  min-height:100dvh;
-  background:var(--cobalt);
-  color:var(--paper);
-  overflow:hidden;
-  isolation:isolate;
-  padding:clamp(6rem,11vh,8.5rem) var(--pad) 0;
-  display:flex;
-  flex-direction:column;
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* =========================================================================
+   SLIDE BASE (viewport-fitting; never scrolls inside)
+   ========================================================================= */
+.slide {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
-/* Wordmark — used as supplied (Brand R-01), white on cobalt (Brand R-02)
-   Sized above the 32px minimum (R-04). Clear space (R-03) preserved by section padding. */
-.hero-wordmark{
-  display:block;
-  height:clamp(64px, 12vh, 150px);
-  width:auto;
-  margin-bottom:clamp(1.2rem, 3vh, 2rem);
-  opacity:0;
-  animation:fade 1s var(--ease) .15s forwards;
-}
-/* layered atmosphere */
-.hero::before{
-  content:"";position:absolute;inset:0;
-  background:
-    radial-gradient(80% 50% at 75% 20%, rgba(200,169,106,.22), transparent 60%),
-    radial-gradient(60% 60% at 5% 100%, rgba(8,42,91,.9), transparent 65%);
-  z-index:-1;
-}
-.hero::after{
-  content:"";position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(244,239,227,.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(244,239,227,.06) 1px, transparent 1px);
-  background-size:64px 64px;
-  mask-image:radial-gradient(ellipse at 60% 40%, #000 30%, transparent 80%);
-  z-index:-1;
+.slide-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: clamp(0.5rem, 1vh, 0.85rem);
+  max-height: 100%;
+  overflow: hidden;
+  padding: var(--slide-padding);
+  /* Ensure chrome header (top: 1rem-2rem) never overlaps content */
+  padding-top: clamp(3.5rem, 6.5vh, 5rem);
+  padding-bottom: clamp(2.5rem, 4vh, 3rem);
 }
 
-.hero-meta{
-  display:flex;justify-content:space-between;align-items:flex-start;
-  gap:1rem;flex-wrap:wrap;
-  font-family:var(--f-mono);font-size:.72rem;
-  letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(244,239,227,.78);
-  margin-bottom:auto;
+/* Slide chrome — small header bar matching the print piece */
+.slide-chrome {
+  position: absolute;
+  top: clamp(1rem, 2.5vh, 2rem);
+  left: var(--slide-padding);
+  right: var(--slide-padding);
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: var(--tag-size);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--cobalt);
+  text-transform: uppercase;
+  z-index: 5;
 }
-.hero-meta .right{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;justify-content:flex-end}
-@media (max-width:640px){
-  .hero-meta{font-size:.62rem}
-  .hero-meta .right{width:100%;justify-content:flex-start}
-}
-.hero-meta .live{
-  display:inline-flex;align-items:center;gap:.4rem;color:var(--gold);
-}
-.hero-meta .live::before{
-  content:"";width:.4rem;height:.4rem;border-radius:50%;background:var(--gold);
-  animation:pulse 1.6s ease-in-out infinite;
-}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
+.slide-chrome .right { color: var(--ink); }
+.slide.on-blue .slide-chrome { color: #fff; }
+.slide.on-blue .slide-chrome .left::before { content: "● "; color: var(--gold); }
+.slide.on-blue .slide-chrome .right { color: #fff; }
 
-.hero-stage{
-  flex:1;
-  display:grid;
-  grid-template-columns:1.3fr .9fr;
-  gap:clamp(2rem,5vw,5rem);
-  align-items:end;
-  padding:clamp(2rem,6vh,5rem) 0 clamp(3rem,8vh,6rem);
-}
-@media (max-width:980px){
-  .hero-stage{grid-template-columns:1fr;align-items:start;gap:2.5rem}
+/* Slide tag — section identifier */
+.section-tag {
+  font-family: var(--font-mono);
+  font-size: var(--tag-size);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--cobalt);
+  text-transform: uppercase;
+  margin-bottom: clamp(0.75rem, 1.5vh, 1.25rem);
 }
 
-.hero-title{
-  font-family:var(--f-sans);
-  font-weight:600; /* Brand: Display = 600 Semibold */
-  font-size:clamp(3.2rem, 10vw, 9.5rem);
-  line-height:.92;
-  letter-spacing:-0.045em; /* Brand: -3 to -4.5% on display */
-  text-transform:none;
-  margin-bottom:1.2rem;
-  color:var(--paper);
+/* Section title — Alan Sans Semibold */
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--h2-size);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  color: var(--cobalt);
+  margin-bottom: clamp(0.5rem, 1.2vh, 1rem);
 }
-.hero-title .row{display:block;overflow:hidden}
-.hero-title .word{display:inline-block;transform:translateY(110%);animation:rise .9s var(--ease) forwards}
-.hero-title .row:nth-child(2) .word{animation-delay:.1s}
-.hero-title .row:nth-child(3) .word{animation-delay:.2s}
-.hero-title .accent{
-  font-weight:300; /* Light contrast within one family */
-  color:var(--gold);
-  letter-spacing:-0.04em;
-}
-@keyframes rise{to{transform:translateY(0)}}
+.section-title .gold { color: var(--gold); }
 
-.hero-sub{
-  font-family:var(--f-mono);
-  font-size:.78rem;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:rgba(244,239,227,.8);
-  margin-top:1.2rem;
-  display:flex;flex-wrap:wrap;gap:.6rem 1.1rem;align-items:center;
-  opacity:0;animation:fade .8s ease .5s forwards;
-}
-.hero-sub .sep{color:var(--gold)}
-@keyframes fade{to{opacity:1}}
-
-.hero-side{
-  position:relative;
-  display:flex;flex-direction:column;justify-content:flex-end;
-  gap:2rem;
-  opacity:0;animation:fade 1s ease .65s forwards;
-}
-.hero-quote{
-  font-family:var(--f-sans);
-  font-weight:300; /* Light — supporting voice */
-  font-size:clamp(1.2rem,1.6vw,1.5rem);
-  line-height:1.4;
-  letter-spacing:-0.015em;
-  color:var(--paper);
-  border-left:1px solid var(--gold);
-  padding:.2rem 0 .2rem 1.1rem;
-  max-width:34ch;
-}
-.hero-quote em{color:var(--gold);font-style:normal;font-weight:600}
-.hero-quote-cite{
-  display:block;margin-top:.7rem;
-  font-family:var(--f-mono);font-style:normal;
-  font-size:.68rem;letter-spacing:.2em;
-  color:rgba(244,239,227,.55);text-transform:uppercase;
+.section-lede {
+  font-size: var(--body-size);
+  line-height: 1.55;
+  max-width: 60ch;
+  color: var(--ink);
+  margin-bottom: clamp(1rem, 2vh, 1.5rem);
 }
 
-.hero-cta-row{
-  display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;
-  margin-top:.6rem;
+/* =========================================================================
+   REVEAL ANIMATION (triggered when slide enters viewport)
+   ========================================================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--dur) var(--ease),
+              transform var(--dur) var(--ease);
 }
-.btn{
-  display:inline-flex;align-items:center;gap:.6rem;
-  padding:.95rem 1.4rem;
-  border-radius:999px;
-  font-family:var(--f-mono);font-size:.72rem;
-  letter-spacing:.16em;text-transform:uppercase;font-weight:600;
-  transition:transform .3s var(--ease), background .3s, color .3s, border-color .3s;
-}
-.btn-primary{background:var(--gold);color:var(--deep);border:1px solid var(--gold)}
-.btn-primary:hover{background:var(--paper);border-color:var(--paper);transform:translateY(-2px)}
-.btn-ghost{border:1px solid rgba(244,239,227,.4);color:var(--paper)}
-.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.slide.visible .reveal { opacity: 1; transform: translateY(0); }
+.reveal:nth-child(1) { transition-delay: 0.08s; }
+.reveal:nth-child(2) { transition-delay: 0.18s; }
+.reveal:nth-child(3) { transition-delay: 0.28s; }
+.reveal:nth-child(4) { transition-delay: 0.38s; }
+.reveal:nth-child(5) { transition-delay: 0.48s; }
+.reveal:nth-child(6) { transition-delay: 0.56s; }
 
-.btn .arrow{transition:transform .3s var(--ease)}
-.btn:hover .arrow{transform:translateX(4px)}
+/* Cards inside grids — stagger by index */
+.stagger > *:nth-child(1) { transition-delay: 0.10s; }
+.stagger > *:nth-child(2) { transition-delay: 0.16s; }
+.stagger > *:nth-child(3) { transition-delay: 0.22s; }
+.stagger > *:nth-child(4) { transition-delay: 0.28s; }
+.stagger > *:nth-child(5) { transition-delay: 0.34s; }
+.stagger > *:nth-child(6) { transition-delay: 0.40s; }
+.stagger > *:nth-child(7) { transition-delay: 0.46s; }
+.stagger > *:nth-child(8) { transition-delay: 0.52s; }
+.stagger > *:nth-child(9) { transition-delay: 0.58s; }
 
-/* hero marquee tape */
-.tape{
-  border-top:1px solid var(--line-on-blue);
-  border-bottom:1px solid var(--line-on-blue);
-  background:var(--deep);
-  overflow:hidden;
-  position:relative;
-  margin:0 calc(var(--pad) * -1);
+/* =========================================================================
+   SLIDE 1 — COVER (cobalt background, UNFILTERED wordmark + manifesto)
+   ========================================================================= */
+.cover {
+  background: var(--cobalt);
+  color: #fff;
 }
-.tape-track{
-  display:flex;gap:3rem;
-  white-space:nowrap;
-  padding:1rem 0;
-  animation:slide 38s linear infinite;
-  font-family:var(--f-mono);
-  font-size:.78rem;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:rgba(244,239,227,.7);
+.cover .slide-content {
+  justify-content: space-between;
+  padding-top: clamp(4rem, 9vh, 6rem);
+  padding-bottom: clamp(2rem, 6vh, 4rem);
 }
-.tape-track span{display:inline-flex;align-items:center;gap:3rem}
-.tape-track .star{color:var(--gold)}
-@keyframes slide{to{transform:translateX(-50%)}}
-
-/* ============================
-   SECTION SCAFFOLDING
-   ============================ */
-section{position:relative}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
-
-.sec-pad{padding:clamp(5rem,10vh,8rem) 0}
-
-.sec-head{
-  display:grid;
-  grid-template-columns:11rem 1fr;
-  gap:clamp(1.5rem,4vw,3.5rem);
-  align-items:baseline;
-  margin-bottom:clamp(2rem,4vh,3rem);
-  padding-bottom:1.5rem;
-  border-bottom:1px solid var(--line-soft);
+.cover .wordmark {
+  display: block;
+  width: clamp(180px, 36vw, 460px);
+  height: auto;
+  margin-top: clamp(1rem, 4vh, 2rem);
 }
-@media (max-width:720px){
-  .sec-head{grid-template-columns:1fr;gap:1rem}
+.cover .manifesto {
+  margin-top: clamp(1rem, 4vh, 2.5rem);
+  max-width: 70ch;
 }
-.sec-tag{
-  font-family:var(--f-mono);font-size:.7rem;letter-spacing:.22em;
-  text-transform:uppercase;color:var(--cobalt);font-weight:600;
-  display:flex;align-items:center;gap:.5rem;padding-top:.5rem;
+.cover .manifesto-quote {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.25rem, 3.2vw, 2.5rem);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: clamp(0.75rem, 1.5vh, 1.25rem);
 }
-.sec-tag::before{
-  content:"";width:.45rem;height:.45rem;background:var(--gold);
-  border-radius:50%;display:inline-block;
-}
-.sec-title{
-  font-family:var(--f-sans);
-  font-weight:600; /* Brand: Display 600 Semibold */
-  font-size:clamp(2rem,4.5vw,3.8rem);
-  line-height:1.02;
-  letter-spacing:-0.035em; /* Brand: -3 to -4.5% */
-  color:var(--cobalt);
-}
-.sec-title .accent{
-  font-weight:300; /* Light contrast */
-  color:var(--gold);
-  letter-spacing:-0.04em;
-}
-.sec-lede{
-  margin-top:1rem;max-width:54ch;
-  font-size:1.05rem;line-height:1.55;color:var(--ink-2);
+.cover .manifesto-quote .gold { color: var(--gold); }
+.cover .manifesto-cite {
+  font-family: var(--font-mono);
+  font-size: var(--tag-size);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  text-transform: uppercase;
+  font-style: normal;
 }
 
-/* ============================
-   MANIFESTO / WELCOME
-   ============================ */
-.manifesto{
-  background:var(--paper);
-  position:relative;
+/* =========================================================================
+   SLIDE 2 — GETTING TO THE VENUE (stat cards)
+   ========================================================================= */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(0.75rem, 1.5vw, 1.5rem);
+  margin-bottom: clamp(0.75rem, 2vh, 1.5rem);
 }
-.manifesto-grid{
-  display:grid;
-  grid-template-columns:1fr 1.05fr;
-  gap:clamp(2rem,5vw,5rem);
-  align-items:start;
+.stat-card {
+  background: #fff;
+  border: 0.5px solid var(--line);
+  border-radius: 4px;
+  padding: clamp(0.85rem, 1.5vw, 1.4rem);
 }
-@media (max-width:880px){.manifesto-grid{grid-template-columns:1fr}}
-
-.manifesto-quote{
-  font-family:var(--f-sans);
-  font-weight:300; /* Light — the supporting weight */
-  font-size:clamp(1.85rem,3.4vw,3.1rem);
-  line-height:1.15;
-  letter-spacing:-0.035em;
-  color:var(--cobalt);
-  position:relative;
+.stat-card .label {
+  font-family: var(--font-mono);
+  font-size: var(--tag-size);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: clamp(0.6rem, 1vh, 1rem);
 }
-.manifesto-quote::before{
-  content:"";
-  position:absolute;
-  top:-1.4rem;left:0;
-  width:2.4rem;height:2px;
-  background:var(--gold);
+.stat-card .big {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3.5vw, 2.6rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--cobalt);
+  margin-bottom: clamp(0.4rem, 0.8vh, 0.7rem);
 }
-.manifesto-quote em{color:var(--gold);font-style:normal;font-weight:600}
-.manifesto-cite{
-  display:block;margin-top:1.4rem;
-  font-family:var(--f-mono);font-size:.7rem;
-  letter-spacing:.22em;text-transform:uppercase;
-  color:var(--muted);
+.stat-card .big .unit {
+  font-size: 0.55em;
+  color: var(--muted);
+  font-weight: 500;
 }
-
-.welcome-note{font-size:1.02rem;line-height:1.65;color:var(--ink-2)}
-.welcome-note p+p{margin-top:1.05rem}
-.welcome-note strong{color:var(--cobalt);font-weight:600}
-.welcome-sig{
-  margin-top:1.6rem;font-family:var(--f-sans);
-  font-weight:600;color:var(--cobalt);
-  font-size:1.2rem;letter-spacing:-0.02em;
+.stat-card .sub {
+  font-size: var(--small-size);
+  color: var(--ink);
 }
 
-/* ============================
-   FACT CARDS
-   ============================ */
-.facts{
-  background:var(--paper-2);
-  border-top:1px solid var(--line-soft);
-  border-bottom:1px solid var(--line-soft);
-  padding:clamp(3rem,7vh,5rem) 0;
+/* =========================================================================
+   SLIDE 3 — TAXI SERVICES (Bolt + Forus with app store links)
+   ========================================================================= */
+.taxi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1rem, 2vw, 1.75rem);
+  margin-top: clamp(0.5rem, 1vh, 1rem);
 }
-.facts-grid{
-  display:grid;
-  grid-template-columns:repeat(4, 1fr);
-  gap:0;
+.taxi-card {
+  background: #fff;
+  border: 0.5px solid var(--line);
+  border-radius: 4px;
+  padding: clamp(1rem, 2vw, 1.8rem);
+  display: flex;
+  flex-direction: column;
 }
-@media (max-width:900px){.facts-grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:520px){.facts-grid{grid-template-columns:1fr}}
-
-.fact{
-  padding:1.25rem clamp(1rem,2vw,2rem);
-  border-left:1px solid var(--line-soft);
+.taxi-card .meta {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: var(--tag-size);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: clamp(0.75rem, 1.5vh, 1.25rem);
 }
-.fact:first-child{border-left:0}
-@media (max-width:900px){
-  .fact:nth-child(odd){border-left:0}
-  .fact:nth-child(n+3){border-top:1px solid var(--line-soft);padding-top:1.5rem;margin-top:.5rem}
+.taxi-card .meta .left { color: var(--cobalt); }
+.taxi-card h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: clamp(0.25rem, 0.5vh, 0.5rem);
 }
-.fact .k{
-  font-family:var(--f-mono);font-size:.65rem;
-  letter-spacing:.22em;text-transform:uppercase;color:var(--muted);
-  margin-bottom:.6rem;
+.taxi-card .sub {
+  font-size: var(--body-size);
+  color: var(--cobalt);
+  font-weight: 600;
+  margin-bottom: clamp(0.75rem, 1.5vh, 1.25rem);
 }
-.fact .v{
-  font-family:var(--f-sans);font-weight:600;
-  font-size:clamp(1.8rem,3vw,2.6rem);
-  letter-spacing:-0.03em;color:var(--cobalt);
-  line-height:1.05;
+.taxi-card .body {
+  font-size: var(--body-size);
+  line-height: 1.5;
+  color: var(--ink);
+  margin-bottom: clamp(0.75rem, 1.5vh, 1.25rem);
+  flex-grow: 1;
 }
-.fact .v small{font-size:.55em;font-weight:500;color:var(--ink-2)}
-.fact .sub{
-  font-family:var(--f-sans);font-size:.92rem;color:var(--ink-2);
-  margin-top:.5rem;line-height:1.4;
+.store-links {
+  display: flex;
+  gap: clamp(0.4rem, 1vw, 0.8rem);
 }
-
-/* ============================
-   AGENDA
-   ============================ */
-.agenda{background:var(--paper)}
-
-.agenda-day{
-  display:grid;
-  grid-template-columns:auto 1fr;
-  gap:clamp(1.5rem,4vw,3.5rem);
-  padding:clamp(2.5rem,5vw,4rem) 0;
-  border-top:1px dashed var(--line);
-  position:relative;
+.store-links a {
+  flex: 1;
+  text-align: center;
+  padding: clamp(0.5rem, 1vh, 0.75rem) clamp(0.5rem, 1vw, 1rem);
+  background: var(--cobalt);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: var(--tag-size);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
-.agenda-day:first-of-type{border-top:0}
-@media (max-width:780px){.agenda-day{grid-template-columns:1fr;gap:1.5rem}}
-
-.day-label{
-  position:sticky;top:6rem;
-  align-self:start;
-}
-.day-num{
-  font-family:var(--f-sans);
-  font-weight:700;
-  font-size:clamp(3.5rem,7vw,5.5rem);
-  line-height:.9;
-  color:var(--cobalt);
-  letter-spacing:-0.04em;
-}
-.day-name{
-  font-family:var(--f-sans);font-weight:300;
-  color:var(--gold);font-size:1.4rem;
-  letter-spacing:-0.02em;
-  margin-top:.4rem;
-}
-.day-date{
-  font-family:var(--f-mono);font-size:.72rem;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
-  margin-top:.7rem;
+.store-links a:hover {
+  background: var(--deep);
+  text-decoration: none;
+  transform: translateY(-1px);
 }
 
-.event-list{display:flex;flex-direction:column}
-.event{
-  display:grid;
-  grid-template-columns:7rem 1fr auto;
-  gap:1.5rem;
-  padding:1.4rem 0;
-  border-bottom:1px solid var(--line-soft);
-  align-items:start;
-  transition:background .3s ease;
+/* =========================================================================
+   SLIDES 4 & 5 — RESTAURANTS GRID (9 cards per slide, 3×3)
+   ========================================================================= */
+.rest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: clamp(0.6rem, 1vw, 1rem);
+  flex: 1;
+  min-height: 0;
 }
-.event:last-child{border-bottom:0}
-.event:hover{background:rgba(14,67,145,.03)}
-@media (max-width:680px){
-  .event{grid-template-columns:5rem 1fr;gap:1rem}
-  .event .ev-meta{grid-column:1/-1;text-align:left;margin-top:.4rem}
+.rest-card {
+  background: #fff;
+  border: 0.5px solid var(--line);
+  border-radius: 4px;
+  padding: clamp(0.75rem, 1.2vw, 1rem);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.rest-card h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: clamp(0.25rem, 0.5vh, 0.4rem);
+}
+.rest-card h3 a {
+  color: var(--ink);
+  background-image: linear-gradient(var(--cobalt), var(--cobalt));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  transition: background-size 0.25s ease;
+  text-decoration: none;
+}
+.rest-card h3 a:hover {
+  background-size: 100% 1px;
+  text-decoration: none;
+}
+.rest-card .desc {
+  font-size: clamp(0.7rem, 0.85vw, 0.85rem);
+  line-height: 1.3;
+  color: var(--cobalt);
+  font-weight: 600;
+  margin-bottom: clamp(0.5rem, 1vh, 0.8rem);
+  flex-grow: 1;
+}
+.rest-card .contact {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.15rem, 0.3vh, 0.3rem);
+  font-family: var(--font-mono);
+  font-size: clamp(0.62rem, 0.72vw, 0.74rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--deep);
+}
+.rest-card .contact a { color: var(--deep); }
+.rest-card .contact a:hover { color: var(--cobalt); }
+.rest-card .contact .web a { color: var(--cobalt); font-weight: 600; }
+
+/* =========================================================================
+   SLIDES 6 & 7 — AGENDA TIMELINE
+   ========================================================================= */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 1.2vh, 1rem);
+}
+.event-row {
+  display: grid;
+  grid-template-columns: clamp(80px, 14vw, 140px) 1fr;
+  gap: clamp(0.75rem, 1.5vw, 1.5rem);
+  padding: clamp(0.85rem, 1.6vh, 1.4rem) clamp(1rem, 2vw, 1.5rem);
+  background: #fff;
+  border: 0.5px solid var(--line);
+  border-radius: 4px;
+}
+.event-row .time {
+  font-family: var(--font-mono);
+  font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--cobalt);
+  padding-top: 2px;
+}
+.event-row h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: clamp(0.25rem, 0.5vh, 0.4rem);
+}
+.event-row h4 .partner { color: var(--cobalt); font-weight: 600; }
+.event-row p {
+  font-size: var(--body-size);
+  line-height: 1.45;
+  color: var(--ink);
+  margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem);
+}
+.event-row .meta {
+  font-family: var(--font-mono);
+  font-size: var(--tag-size);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--deep);
+}
+.event-row .meta a { color: var(--cobalt); font-weight: 600; }
+
+/* Saturday "headline" rows — cobalt blue, white text */
+.event-row.featured {
+  background: var(--cobalt);
+  border-color: var(--cobalt);
+  color: #fff;
+}
+.event-row.featured .time { color: var(--gold); }
+.event-row.featured h4 { color: #fff; }
+.event-row.featured h4 .partner { color: var(--tint); }
+.event-row.featured p { color: var(--tint); }
+
+/* "We've got you covered" callout on Saturday slide */
+.callout {
+  padding: clamp(0.85rem, 1.5vh, 1.25rem) clamp(1rem, 2vw, 1.5rem);
+  background: var(--tint);
+  border-left: 3px solid var(--cobalt);
+  border-radius: 0 4px 4px 0;
+  margin-bottom: clamp(0.75rem, 1.5vh, 1.25rem);
+}
+.callout .label {
+  font-family: var(--font-mono);
+  font-size: var(--tag-size);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--cobalt);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem);
+}
+.callout-body {
+  font-size: var(--body-size);
+  line-height: 1.5;
+  color: var(--deep);
 }
 
-.event.featured{
-  background:linear-gradient(90deg, rgba(200,169,106,.10), transparent 70%);
-  border-left:3px solid var(--gold);
-  padding-left:1.2rem;
-  margin-left:-1.2rem;
+/* =========================================================================
+   SLIDE 8 — VINYL SOUNDTRACK
+   ========================================================================= */
+.dj-list {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 0.5px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.dj-row {
+  display: grid;
+  grid-template-columns: clamp(140px, 22vw, 220px) 1fr auto;
+  gap: clamp(1rem, 2vw, 2rem);
+  align-items: center;
+  padding: clamp(0.85rem, 1.8vh, 1.4rem) clamp(1.25rem, 2.5vw, 2rem);
+  border-bottom: 0.5px solid var(--line);
+}
+.dj-row:last-child { border-bottom: none; }
+.dj-row .slot {
+  font-family: var(--font-mono);
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--cobalt);
+}
+.dj-row .artist {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.dj-row .kind {
+  font-family: var(--font-mono);
+  font-size: var(--tag-size);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  text-transform: uppercase;
+  text-align: right;
 }
 
-.ev-time{
-  font-family:var(--f-mono);font-weight:500;
-  font-size:.85rem;letter-spacing:.04em;
-  color:var(--cobalt);
-  padding-top:.2rem;
+/* =========================================================================
+   SLIDE 9 — CLOSING (See you in Rīga + support cards)
+   ========================================================================= */
+.closing {
+  background: var(--cobalt);
+  color: #fff;
 }
-.ev-body h4{
-  font-family:var(--f-sans);font-weight:600;
-  font-size:1.18rem;line-height:1.25;letter-spacing:-0.015em;
-  color:var(--ink);
-  margin-bottom:.4rem;
+.closing .slide-content {
+  padding-top: clamp(4rem, 9vh, 5.5rem);
+  justify-content: flex-start;
+  gap: clamp(1rem, 2vh, 1.75rem);
 }
-.ev-body h4 .partner{color:var(--gold);font-weight:500}
-.ev-body p{font-size:.95rem;line-height:1.55;color:var(--ink-2);max-width:62ch}
-.ev-body .links{
-  margin-top:.55rem;
-  font-family:var(--f-mono);font-size:.68rem;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
-  display:flex;gap:1rem;flex-wrap:wrap;
+.closing h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.25rem, 5.5vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  color: #fff;
 }
-.ev-body .links a{color:var(--cobalt);border-bottom:1px solid var(--gold);padding-bottom:1px}
-.ev-body .links a:hover{color:var(--gold)}
+.closing h1 .gold { color: var(--gold); }
+.closing .thank-you {
+  font-size: var(--body-size);
+  line-height: 1.55;
+  max-width: 60ch;
+  color: #fff;
+}
+.closing .thank-you .gold { color: var(--gold); font-weight: 600; }
 
-.ev-meta{
-  text-align:right;
-  font-family:var(--f-mono);font-size:.65rem;
-  letter-spacing:.18em;text-transform:uppercase;
-  color:var(--muted);
-  padding-top:.4rem;
+.support-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(0.75rem, 1.5vw, 1.5rem);
 }
-.ev-meta .tag{
-  display:inline-block;
-  padding:.25rem .55rem;border:1px solid var(--line);
-  border-radius:3px;color:var(--cobalt);
+.support-card {
+  background: var(--deep);
+  border: 0.5px solid var(--line-on-blue);
+  border-radius: 4px;
+  padding: clamp(1rem, 2vw, 1.6rem);
 }
-
-/* ============================
-   RESTAURANTS
-   ============================ */
-.eat{background:var(--deep);color:var(--paper);overflow:hidden;position:relative}
-.eat::before{
-  content:"";position:absolute;inset:0;
-  background:
-    radial-gradient(60% 50% at 90% 0%, rgba(200,169,106,.16), transparent 60%),
-    radial-gradient(50% 40% at 0% 100%, rgba(14,67,145,.6), transparent 60%);
-  pointer-events:none;
+.support-card .role {
+  font-family: var(--font-mono);
+  font-size: var(--tag-size);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
 }
-.eat .sec-head{border-bottom-color:var(--line-on-blue)}
-.eat .sec-tag{color:var(--gold)}
-.eat .sec-title{color:var(--paper)}
-.eat .sec-lede{color:rgba(244,239,227,.7)}
-
-.rest-grid{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:0;
-  border-top:1px solid var(--line-on-blue);
-  border-left:1px solid var(--line-on-blue);
+.support-card .name {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem);
 }
-@media (max-width:980px){.rest-grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:600px){.rest-grid{grid-template-columns:1fr}}
-
-.rest{
-  padding:1.6rem 1.5rem 1.4rem;
-  border-right:1px solid var(--line-on-blue);
-  border-bottom:1px solid var(--line-on-blue);
-  position:relative;
-  transition:background .35s var(--ease);
-  display:flex;flex-direction:column;gap:.55rem;
-  min-height:9.5rem;
+.support-card .phone {
+  font-family: var(--font-mono);
+  font-size: clamp(0.9rem, 1.25vw, 1.05rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--tint);
+  margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem);
 }
-.rest:hover{background:rgba(200,169,106,.08)}
-.rest .num{
-  position:absolute;top:.8rem;right:.9rem;
-  font-family:var(--f-mono);font-size:.62rem;
-  letter-spacing:.18em;color:rgba(244,239,227,.4);
-}
-.rest h3{
-  font-family:var(--f-sans);font-weight:600;
-  font-size:1.5rem;letter-spacing:-0.02em;
-  color:var(--paper);
-}
-.rest h3 a:hover{color:var(--gold)}
-.rest .desc{
-  font-family:var(--f-sans);font-weight:300;
-  font-size:.95rem;color:rgba(244,239,227,.78);
-  line-height:1.4;letter-spacing:-0.005em;
-}
-.rest .contact{
-  margin-top:auto;
-  font-family:var(--f-mono);font-size:.7rem;
-  letter-spacing:.06em;color:rgba(244,239,227,.62);
-  display:flex;flex-direction:column;gap:.2rem;line-height:1.5;
-}
-.rest .contact a{border-bottom:1px solid transparent}
-.rest .contact a:hover{color:var(--gold);border-bottom-color:var(--gold)}
-.rest .contact .web{color:var(--gold)}
-
-/* ============================
-   SOUNDS
-   ============================ */
-.sounds{background:var(--paper)}
-.dj-list{
-  display:flex;flex-direction:column;
-  border-top:1px solid var(--line-soft);
-}
-.dj{
-  display:grid;
-  grid-template-columns:10rem 1fr auto;
-  align-items:center;
-  gap:2rem;
-  padding:1.4rem 0;
-  border-bottom:1px solid var(--line-soft);
-  position:relative;
-  overflow:hidden;
-}
-.dj::after{
-  content:"";position:absolute;left:0;top:0;bottom:0;width:0;
-  background:linear-gradient(90deg, rgba(200,169,106,.12), transparent);
-  transition:width .5s var(--ease);
-}
-.dj:hover::after{width:100%}
-.dj > *{position:relative;z-index:1}
-
-@media (max-width:640px){
-  .dj{grid-template-columns:1fr auto;gap:.4rem .8rem}
-  .dj .dj-time{grid-column:1/-1;margin-bottom:.2rem}
+.support-card .phone a { color: var(--tint); }
+.support-card .channel {
+  font-family: var(--font-mono);
+  font-size: var(--tag-size);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--tint);
+  text-transform: uppercase;
+  opacity: 0.85;
 }
 
-.dj-time{
-  font-family:var(--f-mono);font-weight:500;font-size:.8rem;
-  letter-spacing:.06em;color:var(--cobalt);
+.meeting-banner {
+  background: var(--deep);
+  border: 0.5px solid var(--line-on-blue);
+  border-radius: 4px;
+  padding: clamp(1rem, 2vw, 1.75rem);
 }
-.dj-name{
-  font-family:var(--f-sans);font-weight:600;
-  font-size:clamp(1.6rem,2.6vw,2.2rem);
-  letter-spacing:-0.025em;
-  color:var(--ink);
+.meeting-banner .label {
+  font-family: var(--font-mono);
+  font-size: var(--tag-size);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: clamp(0.5rem, 1vh, 0.85rem);
 }
-.dj-kind{
-  font-family:var(--f-mono);font-weight:400;
-  font-size:.7rem;color:var(--gold);
-  letter-spacing:.18em;text-transform:uppercase;
+.meeting-banner .name {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
 }
-
-/* ============================
-   GETTING THERE / VENUE
-   ============================ */
-.venue{background:var(--paper-2);border-top:1px solid var(--line-soft)}
-.venue-grid{
-  display:grid;
-  grid-template-columns:1.4fr 1fr;
-  gap:clamp(2rem,5vw,4rem);
-  align-items:start;
-}
-@media (max-width:860px){.venue-grid{grid-template-columns:1fr}}
-
-.venue-block{
-  background:var(--cobalt);
-  color:var(--paper);
-  padding:clamp(2rem,4vw,3rem);
-  position:relative;
-  overflow:hidden;
-  isolation:isolate;
-}
-.venue-block::before{
-  content:"";position:absolute;right:-20%;top:-20%;width:80%;height:80%;
-  background:radial-gradient(circle, rgba(200,169,106,.25), transparent 65%);
-  z-index:-1;
-}
-.venue-block .pin{
-  font-family:var(--f-mono);font-size:.72rem;letter-spacing:.22em;
-  color:var(--gold);text-transform:uppercase;margin-bottom:1rem;
-  display:flex;align-items:center;gap:.5rem;
-}
-.venue-block .pin::before{content:"◉"}
-.venue-name{
-  font-family:var(--f-sans);font-weight:700;
-  font-size:clamp(2.2rem,4.5vw,3.6rem);
-  line-height:.95;letter-spacing:-0.04em;
-  color:var(--paper);
-  text-transform:uppercase;
-}
-.venue-name .addr{
-  display:block;
-  font-family:var(--f-mono);font-weight:400;
-  text-transform:uppercase;
-  color:var(--gold);
-  margin-top:.7rem;
-  font-size:.22em;
-  letter-spacing:.18em;
-}
-.venue-block .desc{
-  margin-top:1.5rem;color:rgba(244,239,227,.82);line-height:1.6;
-  max-width:46ch;
-}
-.venue-stats{
-  margin-top:2rem;
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1.2rem;
-  padding-top:1.6rem;
-  border-top:1px solid var(--line-on-blue);
-}
-.venue-stats .k{
-  font-family:var(--f-mono);font-size:.62rem;
-  letter-spacing:.18em;text-transform:uppercase;color:rgba(244,239,227,.6);
-}
-.venue-stats .v{
-  font-family:var(--f-sans);font-weight:600;
-  font-size:1.7rem;letter-spacing:-0.02em;color:var(--paper);
-  margin-top:.2rem;line-height:1;
-}
-.venue-stats .v small{font-size:.55em;color:var(--gold);font-weight:500}
-
-.taxis{display:flex;flex-direction:column;gap:1rem}
-.taxi{
-  padding:1.4rem 1.4rem;
-  background:var(--paper);
-  border:1px solid var(--line-soft);
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:.8rem 1.5rem;
-  align-items:start;
-}
-.taxi .label{
-  font-family:var(--f-mono);font-size:.62rem;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
-  grid-column:1/-1;
-}
-.taxi h3{
-  font-family:var(--f-sans);font-weight:700;font-size:1.7rem;
-  letter-spacing:-0.025em;color:var(--cobalt);line-height:1;
-}
-.taxi .badge{
-  font-family:var(--f-mono);font-size:.65rem;
-  letter-spacing:.18em;text-transform:uppercase;
-  padding:.3rem .55rem;
-  border:1px solid var(--cobalt);color:var(--cobalt);
-  border-radius:3px;align-self:start;
-}
-.taxi .badge.alt{border-color:var(--muted);color:var(--muted)}
-.taxi p{
-  font-size:.9rem;line-height:1.5;color:var(--ink-2);
-  grid-column:1/-1;
-}
-.taxi .stores{
-  grid-column:1/-1;
-  display:flex;gap:.6rem;
-  font-family:var(--f-mono);font-size:.7rem;
-  letter-spacing:.14em;text-transform:uppercase;
-}
-.taxi .stores a{
-  padding:.45rem .85rem;border:1px solid var(--line);border-radius:999px;
-  color:var(--cobalt);transition:all .3s;
-}
-.taxi .stores a:hover{background:var(--cobalt);color:var(--paper);border-color:var(--cobalt)}
-
-/* ============================
-   CLOSING / CONTACT
-   ============================ */
-.closing{
-  background:var(--cobalt);color:var(--paper);
-  position:relative;overflow:hidden;
-  padding:clamp(5rem,10vh,8rem) 0;
-}
-.closing::before{
-  content:"";position:absolute;inset:0;
-  background:
-    radial-gradient(80% 60% at 20% 0%, rgba(200,169,106,.18), transparent 60%),
-    radial-gradient(60% 60% at 100% 100%, rgba(8,42,91,.85), transparent 60%);
-}
-.closing::after{
-  content:"";position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(244,239,227,.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(244,239,227,.05) 1px, transparent 1px);
-  background-size:80px 80px;
-  mask-image:radial-gradient(ellipse at 50% 50%, #000 30%, transparent 80%);
-}
-.closing .wrap{position:relative;z-index:2}
-
-.closing-wordmark{
-  display:block;
-  height:clamp(56px, 9vh, 110px);
-  width:auto;
-  margin-bottom:clamp(1.5rem, 4vh, 3rem);
-  /* Brand R-02: Inverse lockup — white on cobalt */
-}
-.closing-headline{
-  font-family:var(--f-sans);font-weight:600; /* Brand: Display 600 */
-  font-size:clamp(3.5rem,9vw,8rem);
-  line-height:.92;
-  letter-spacing:-0.045em; /* Brand: -4.5% on display */
-  margin-bottom:2rem;
-  color:var(--paper);
-}
-.closing-headline .accent{
-  font-weight:300;
-  color:var(--gold);
-  letter-spacing:-0.04em;
-}
-.thanks{
-  max-width:62ch;font-size:1.15rem;line-height:1.55;
-  color:rgba(244,239,227,.82);
-}
-.thanks .gold{color:var(--gold)}
-
-.wa-cta{
-  margin-top:3rem;
-  padding:1.8rem;
-  background:rgba(244,239,227,.06);
-  border:1px solid var(--line-on-blue);
-  border-radius:6px;
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:1.5rem;align-items:center;
-}
-@media (max-width:680px){.wa-cta{grid-template-columns:1fr}}
-.wa-cta .label{
-  font-family:var(--f-mono);font-size:.7rem;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
-  margin-bottom:.5rem;
-}
-.wa-cta .title{
-  font-family:var(--f-sans);font-weight:600;font-size:1.4rem;
-  letter-spacing:-0.02em;
-  margin-bottom:.4rem;
-}
-.wa-cta p{font-size:.92rem;color:rgba(244,239,227,.72);line-height:1.5;max-width:50ch}
-
-.contacts{
-  margin-top:3rem;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:0;
-  border-top:1px solid var(--line-on-blue);
-  border-left:1px solid var(--line-on-blue);
-}
-@media (max-width:780px){.contacts{grid-template-columns:1fr}}
-.contact-card{
-  padding:1.4rem 1.5rem;
-  border-right:1px solid var(--line-on-blue);
-  border-bottom:1px solid var(--line-on-blue);
-}
-.contact-card .role{
-  font-family:var(--f-mono);font-size:.65rem;
-  letter-spacing:.2em;text-transform:uppercase;color:rgba(244,239,227,.55);
-  margin-bottom:.7rem;
-}
-.contact-card .name{
-  font-family:var(--f-sans);font-weight:600;font-size:1.6rem;
-  letter-spacing:-0.025em;color:var(--paper);
-}
-.contact-card .phone{
-  margin-top:.3rem;
-  font-family:var(--f-mono);font-size:.9rem;color:var(--gold);
-}
-.contact-card .channel{
-  margin-top:.5rem;font-size:.85rem;color:rgba(244,239,227,.6);
-}
-.contact-card.meet .name{color:var(--gold)}
-.contact-card.meet .role::before{content:"◉ ";color:var(--gold)}
-
-/* ============================
-   SPONSORS
-   ============================ */
-.sponsors{
-  background:var(--paper);
-  padding:clamp(4rem,8vh,6rem) 0;
-  border-top:1px solid var(--line-soft);
-}
-.sponsors h2{
-  font-family:var(--f-sans);font-weight:600;
-  font-size:clamp(1.6rem,2.8vw,2.4rem);
-  letter-spacing:-0.025em;color:var(--cobalt);
-  margin-bottom:.5rem;
-}
-.sponsors h2 .accent{
-  font-weight:300;color:var(--gold);letter-spacing:-0.035em;
-}
-.sponsors .intro{
-  max-width:60ch;color:var(--ink-2);font-size:.98rem;line-height:1.55;
-}
-.sponsor-grid{
-  margin-top:2.5rem;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:1.2rem;
-}
-@media (max-width:920px){.sponsor-grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:520px){.sponsor-grid{grid-template-columns:1fr}}
-.sponsor{
-  padding:1.5rem;
-  background:var(--paper-2);
-  border:1px solid var(--line-soft);
-  transition:all .35s var(--ease);
-}
-.sponsor:hover{border-color:var(--gold);transform:translateY(-3px)}
-.sponsor h4{
-  font-family:var(--f-sans);font-weight:700;
-  font-size:1.4rem;letter-spacing:-0.02em;
-  color:var(--cobalt);margin-bottom:.5rem;
-}
-.sponsor p{font-size:.88rem;line-height:1.5;color:var(--ink-2)}
-
-/* ============================
-   FOOTER
-   ============================ */
-footer{
-  background:var(--deep);color:rgba(244,239,227,.7);
-  padding:clamp(2.5rem,5vh,3.5rem) 0 clamp(1.2rem,3vh,2rem);
-  border-top:1px solid rgba(244,239,227,.08);
-}
-.foot-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
-  padding-bottom:clamp(1.5rem,4vh,2.5rem);
-  border-bottom:1px solid rgba(244,239,227,.08);
-  margin-bottom:clamp(1.2rem,3vh,1.8rem);
-}
-@media (max-width:780px){.foot-grid{grid-template-columns:repeat(2,1fr)}}
-.foot-block .k{
-  font-family:var(--f-mono);font-size:.62rem;
-  letter-spacing:.22em;text-transform:uppercase;color:rgba(244,239,227,.45);
-  margin-bottom:.4rem;
-}
-.foot-block a{
-  font-family:var(--f-sans);font-weight:500;font-size:1.05rem;
-  color:var(--paper);letter-spacing:-0.01em;
-  border-bottom:1px solid transparent;
-}
-.foot-block a:hover{color:var(--gold);border-bottom-color:var(--gold)}
-.foot{
-  display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;
-  font-family:var(--f-mono);font-size:.65rem;
-  letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(244,239,227,.45);
-}
-.foot .gold{color:var(--gold)}
-.foot a:hover{color:var(--gold)}
-
-/* ============================
-   REVEAL
-   ============================ */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-.reveal.in{opacity:1;transform:translateY(0)}
-.reveal.d1{transition-delay:.08s}
-.reveal.d2{transition-delay:.16s}
-.reveal.d3{transition-delay:.24s}
-.reveal.d4{transition-delay:.32s}
-.reveal.d5{transition-delay:.40s}
-
-/* progress bar */
-.progress{
-  position:fixed;left:0;top:0;height:2px;width:0;
-  background:var(--gold);z-index:60;transition:width .15s linear;
+.meeting-banner .addr {
+  font-size: var(--body-size);
+  color: var(--tint);
 }
 
-@media (prefers-reduced-motion: reduce){
-  .hero-title .word, .hero-sub, .hero-side, .reveal{
-    animation:none !important;transform:none !important;opacity:1 !important;
+.closing-contacts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(0.5rem, 1vw, 1rem);
+  padding-top: clamp(0.75rem, 1.5vh, 1.25rem);
+  border-top: 0.5px solid var(--line-on-blue);
+}
+.closing-contacts .label {
+  font-family: var(--font-mono);
+  font-size: var(--tag-size);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: uppercase;
+  margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem);
+}
+.closing-contacts .value {
+  font-size: clamp(0.8rem, 1vw, 0.95rem);
+  font-weight: 600;
+  color: #fff;
+}
+.closing-contacts .value a { color: #fff; }
+
+/* =========================================================================
+   PROGRESS BAR + NAV DOTS + KEYBOARD HINT
+   ========================================================================= */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--gold);
+  z-index: 1000;
+  transition: width 0.18s var(--ease);
+}
+.nav-dots {
+  position: fixed;
+  right: clamp(0.75rem, 1.5vw, 1.5rem);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  z-index: 50;
+}
+.nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cobalt);
+  opacity: 0.25;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  padding: 0;
+}
+.nav-dot:hover { opacity: 0.55; }
+.nav-dot.active { opacity: 1; transform: scale(1.4); }
+/* Inverse for blue slides */
+body.on-dark-slide .nav-dot { background: #fff; }
+
+.keyboard-hint {
+  position: fixed;
+  bottom: clamp(0.75rem, 1.5vw, 1.5rem);
+  left: clamp(0.75rem, 1.5vw, 1.5rem);
+  font-family: var(--font-mono);
+  font-size: var(--tag-size);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--cobalt);
+  text-transform: uppercase;
+  opacity: 0.7;
+  z-index: 50;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+body.on-dark-slide .keyboard-hint { color: rgba(255, 255, 255, 0.7); }
+/* Hide keyboard hint on dark blue slides — content goes near edges */
+body.on-dark-slide .keyboard-hint { display: none; }
+.keyboard-hint .kbd {
+  display: inline-block;
+  padding: 2px 6px;
+  border: 0.5px solid currentColor;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.slide-count {
+  position: fixed;
+  bottom: clamp(0.75rem, 1.5vw, 1.5rem);
+  right: clamp(0.75rem, 1.5vw, 1.5rem);
+  font-family: var(--font-mono);
+  font-size: var(--tag-size);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--cobalt);
+  opacity: 0.7;
+  z-index: 50;
+  pointer-events: none;
+}
+body.on-dark-slide .slide-count { color: rgba(255, 255, 255, 0.7); }
+
+/* =========================================================================
+   RESPONSIVE BREAKPOINTS (height + width)
+   ========================================================================= */
+@media (max-height: 800px) {
+  .rest-card { padding: clamp(0.6rem, 1vw, 0.85rem); }
+  .event-row { padding: clamp(0.6rem, 1.2vh, 1rem) clamp(0.85rem, 1.5vw, 1.2rem); }
+}
+@media (max-height: 700px) {
+  :root {
+    --slide-padding: clamp(1rem, 3vw, 2.5rem);
+    --content-gap: clamp(0.4rem, 1vh, 1rem);
   }
-  .tape-track{animation:none}
+  .nav-dots { display: none; }
+}
+@media (max-height: 600px) {
+  :root {
+    --slide-padding: clamp(0.75rem, 2.5vw, 1.75rem);
+    --h2-size: clamp(1.2rem, 3vw, 2rem);
+    --body-size: clamp(0.75rem, 1vw, 0.9rem);
+  }
+  .keyboard-hint, .slide-count { display: none; }
+}
+@media (max-width: 900px) {
+  .rest-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(5, 1fr); }
+  .stat-grid { grid-template-columns: 1fr; }
+  .taxi-grid { grid-template-columns: 1fr; }
+  .support-grid { grid-template-columns: 1fr; }
+  .closing-contacts { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .rest-grid { grid-template-columns: 1fr; grid-template-rows: auto; overflow-y: auto; }
+  .dj-row { grid-template-columns: 1fr; gap: 0.25rem; }
+  .dj-row .kind { text-align: left; }
+}
+
+/* =========================================================================
+   WELCOME NOTE SLIDE
+   ========================================================================= */
+.note-body {
+  max-width: 75ch;
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  line-height: 1.7;
+  color: var(--ink);
+}
+.note-body p {
+  margin-bottom: clamp(0.85rem, 1.6vh, 1.4rem);
+}
+.note-body p:last-of-type { margin-bottom: 0; }
+.note-signoff {
+  margin-top: clamp(1rem, 2vh, 1.75rem);
+  font-style: italic;
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  color: var(--ink);
+}
+.note-signature {
+  margin-top: clamp(0.4rem, 0.8vh, 0.6rem);
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 0.9vw, 0.85rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--cobalt);
+  text-transform: uppercase;
+}
+
+/* =========================================================================
+   MERGED GETTING + TAXI LAYOUT (smaller stats, side-by-side taxi)
+   ========================================================================= */
+.merged-section .stat-grid {
+  margin-bottom: clamp(1rem, 2.5vh, 2rem);
+}
+.merged-section .mini-header {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+  letter-spacing: -0.02em;
+  color: var(--cobalt);
+  margin: clamp(0.5rem, 1vh, 1rem) 0 clamp(0.5rem, 1vh, 1rem) 0;
+}
+
+/* =========================================================================
+   SATURDAY FOOD CARDS
+   ========================================================================= */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(0.75rem, 1.5vw, 1.5rem);
+  margin-top: clamp(0.5rem, 1vh, 1rem);
+}
+.food-card {
+  background: #fff;
+  border: 0.5px solid var(--line);
+  border-radius: 4px;
+  padding: clamp(1rem, 1.8vw, 1.5rem);
+}
+.food-card h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
+}
+.food-card p {
+  font-size: var(--body-size);
+  line-height: 1.4;
+  color: var(--cobalt);
+  font-weight: 600;
+}
+
+/* =========================================================================
+   CLOSING: WHATSAPP CTA
+   ========================================================================= */
+.whatsapp-cta {
+  margin: clamp(0.75rem, 1.5vh, 1.5rem) 0;
+  padding: clamp(1rem, 2vh, 1.5rem) clamp(1.25rem, 2.5vw, 2rem);
+  background: var(--deep);
+  border: 1px solid var(--line-on-blue);
+  border-left: 3px solid var(--gold);
+  border-radius: 4px;
+}
+.whatsapp-cta .label {
+  font-family: var(--font-mono);
+  font-size: var(--tag-size);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: clamp(0.5rem, 1vh, 0.85rem);
+}
+.whatsapp-cta p {
+  font-size: var(--body-size);
+  line-height: 1.5;
+  color: #fff;
+  margin-bottom: clamp(0.5rem, 1vh, 0.85rem);
+}
+.whatsapp-cta p:last-of-type { margin-bottom: 0; }
+.whatsapp-cta .join-btn {
+  display: inline-block;
+  margin-top: clamp(0.5rem, 1vh, 0.85rem);
+  padding: clamp(0.6rem, 1.2vh, 0.9rem) clamp(1.25rem, 2vw, 2rem);
+  background: var(--gold);
+  color: var(--deep);
+  font-family: var(--font-mono);
+  font-size: clamp(0.75rem, 0.95vw, 0.95rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.whatsapp-cta .join-btn:hover {
+  background: #d8bb7c;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+/* =========================================================================
+   SPONSORS PAGE
+   ========================================================================= */
+.sponsors-page {
+  background: var(--cobalt);
+  color: #fff;
+}
+.sponsors-page .slide-content {
+  padding-top: clamp(4rem, 9vh, 5.5rem);
+  justify-content: flex-start;
+  gap: clamp(1rem, 2vh, 1.75rem);
+}
+.sponsors-page h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  color: #fff;
+  margin-bottom: clamp(0.5rem, 1vh, 0.85rem);
+}
+.sponsors-page h1 .gold { color: var(--gold); }
+.sponsors-page .intro {
+  font-size: var(--body-size);
+  line-height: 1.55;
+  max-width: 70ch;
+  color: #fff;
+}
+.sponsors-page .intro .gold { color: var(--gold); font-weight: 600; }
+.sponsors-section-label {
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 0.9vw, 0.9rem);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-top: clamp(0.75rem, 1.5vh, 1.25rem);
+}
+.sponsors-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(0.75rem, 1.5vw, 1.5rem);
+}
+.sponsor-card {
+  background: var(--deep);
+  border: 0.5px solid var(--line-on-blue);
+  border-radius: 4px;
+  padding: clamp(1rem, 2vw, 1.6rem);
+}
+.sponsor-card h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
+}
+.sponsor-card p {
+  font-size: var(--body-size);
+  line-height: 1.5;
+  color: var(--tint);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.2s !important;
+  }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; }
 }
 </style>
 </head>
 <body>
 
-<div class="progress" id="progress"></div>
+<!-- Progress bar at top -->
+<div class="progress-bar" id="progressBar"></div>
 
-<!-- =================== NAV =================== -->
-<nav class="nav" id="nav">
-  <a class="brand" href="#top"><span class="dot"></span> UNFILTERED</a>
-  <div class="links">
-    <a href="#manifesto">Manifesto</a>
-    <a href="#agenda">Agenda</a>
-    <a href="#eat">Eat &amp; Drink</a>
-    <a href="#venue">Venue</a>
-    <a href="#closing">Contact</a>
+<!-- Side nav dots -->
+<nav class="nav-dots" id="navDots" aria-label="Slide navigation"></nav>
+
+<!-- Bottom hints -->
+<div class="keyboard-hint">
+  <span class="kbd">↑</span> <span class="kbd">↓</span> Navigate
+</div>
+<div class="slide-count" id="slideCount">01 / 11</div>
+
+
+<!-- ========================================================================
+     SLIDE 1 — COVER
+     ======================================================================== -->
+<section class="slide cover on-blue" data-title="Cover">
+  <div class="slide-chrome">
+    <span class="left">UNFILTERED · WELCOME GUIDE</span>
+    <span class="right">RIGA · LATVIA</span>
   </div>
-  <a class="cta" href="https://chat.whatsapp.com/KP6M9wsCf9m7HUUBA42FDS" target="_blank" rel="noopener">Join WhatsApp →</a>
-</nav>
-
-<!-- =================== HERO =================== -->
-<header class="hero" id="top">
-  <div class="hero-meta">
-    <span>UNFILTERED · Brand Book · Edition 01 · 2026</span>
-    <span class="right">
-      <span class="live">Live · 30.05.26</span>
-      <span>Rīga · Latvia</span>
-    </span>
+  <div class="slide-content">
+    <img class="wordmark reveal" src="welcome-guide-assets/unfiltered-wordmark.png" alt="UNFILTERED">
+    <div class="manifesto">
+      <p class="manifesto-quote reveal">
+        "The natural wine movement isn't a trend,<br>
+        it's a <span class="gold">correction</span> of an industrial mistake."
+      </p>
+      <cite class="manifesto-cite reveal">— UNFILTERED MANIFESTO</cite>
+    </div>
   </div>
+</section>
 
-  <div class="hero-stage">
-    <div>
-      <img class="hero-wordmark" src="wordmark.png" alt="UNFILTERED">
-      <h1 class="hero-title">
-        <span class="row"><span class="word">Less pretension,</span></span>
-        <span class="row"><span class="word"><span class="accent">more substance.</span></span></span>
-      </h1>
-      <div class="hero-sub">
-        <span>29 — 30 May 2026</span>
-        <span class="sep">·</span>
-        <span>VEF Kvartāls</span>
-        <span class="sep">·</span>
-        <span>Ūnijas iela 8</span>
-        <span class="sep">·</span>
-        <span>Rīga, LV</span>
+
+<!-- ========================================================================
+     SLIDE 2 — WELCOME NOTE
+     ======================================================================== -->
+<section class="slide" data-title="Welcome">
+  <div class="slide-chrome">
+    <span class="left">UNFILTERED · WELCOME GUIDE</span>
+    <span class="right">RIGA · LATVIA</span>
+  </div>
+  <div class="slide-content">
+    <div class="section-tag reveal">A note from the UNFILTERED team</div>
+    <h2 class="section-title reveal">Welcome to Rīga.</h2>
+
+    <div class="note-body">
+      <p class="reveal">Thank you for making the journey to Riga for the very first <strong>UNFILTERED Natural Wine Festival</strong>. We are incredibly grateful you are here.</p>
+
+      <p class="reveal">Our goal is to establish this as an annual milestone that elevates and expands the low-intervention, natural wine movement across the Baltics. Honestly, we are obsessed with the level of craftsmanship represented by this year's participants, and we want to ensure your experience here is entirely seamless.</p>
+
+      <p class="reveal">We have designed this guide to help you navigate our city and your schedule effortlessly. Your comfort is our priority, and we welcome your candid feedback after the event so we can refine and improve everything for next year.</p>
+
+      <p class="note-signoff reveal">Cheers to an incredible weekend,</p>
+      <p class="note-signature reveal">— The UNFILTERED Team</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================================================================
+     SLIDE 3 — GETTING TO VEF KVARTĀLS + TAXI (merged)
+     ======================================================================== -->
+<section class="slide merged-section" data-title="Getting there + Taxi">
+  <div class="slide-chrome">
+    <span class="left">UNFILTERED · WELCOME GUIDE</span>
+    <span class="right">RIGA · LATVIA</span>
+  </div>
+  <div class="slide-content">
+    <div class="section-tag reveal">01 · Getting to the venue</div>
+    <h2 class="section-title reveal">VEF KVARTĀLS.<br>Ūnijas iela 8.</h2>
+    <p class="section-lede reveal">
+      The festival lives at VEF KVARTĀLS — a former Soviet electronics plant turned creative quarter, a short ride north-east of the centre. Stick to ride-hailing apps; both work in English and quote upfront.
+    </p>
+
+    <div class="stat-grid stagger">
+      <div class="stat-card reveal">
+        <div class="label">Address</div>
+        <div class="big">Ūnijas 8</div>
+        <div class="sub">VEF KVARTĀLS · Riga</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="label">From City Centre</div>
+        <div class="big">€10–12</div>
+        <div class="sub">Typical ride-hailing fare</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="label">Drive Time</div>
+        <div class="big">10–15<span class="unit"> min</span></div>
+        <div class="sub">Off-peak from Old Town</div>
       </div>
     </div>
 
-    <aside class="hero-side">
-      <blockquote class="hero-quote">
-        Baltics natural wine festival — one day in Rīga. 40+ winemakers, 250+ wines, <em>one room.</em>
-        <cite class="hero-quote-cite">— UNFILTERED · Founding Principle</cite>
-      </blockquote>
-      <div class="hero-cta-row">
-        <a class="btn btn-primary" href="#agenda">See the agenda <span class="arrow">→</span></a>
-        <a class="btn btn-ghost" href="#eat">Where to drink <span class="arrow">→</span></a>
-      </div>
-    </aside>
-  </div>
+    <h3 class="mini-header reveal">Two apps. Both reliable.</h3>
 
-  <div class="tape" aria-hidden="true">
-    <div class="tape-track">
-      <span>Natural wine <span class="star">✦</span> Low intervention <span class="star">✦</span> Skin contact <span class="star">✦</span> Pet-Nat <span class="star">✦</span> Native yeast <span class="star">✦</span> Wild ferments <span class="star">✦</span> Baltic premiere <span class="star">✦</span> First edition <span class="star">✦</span></span>
-      <span>Natural wine <span class="star">✦</span> Low intervention <span class="star">✦</span> Skin contact <span class="star">✦</span> Pet-Nat <span class="star">✦</span> Native yeast <span class="star">✦</span> Wild ferments <span class="star">✦</span> Baltic premiere <span class="star">✦</span> First edition <span class="star">✦</span></span>
-    </div>
-  </div>
-</header>
-
-
-<!-- =================== MANIFESTO / WELCOME =================== -->
-<section class="manifesto sec-pad" id="manifesto">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="sec-tag">§ 01 — Welcome</div>
-      <div>
-        <h2 class="sec-title">A note from the <span class="accent">UNFILTERED</span> team.</h2>
-        <p class="sec-lede">Why we're doing this, what we believe, and what to expect from the first edition.</p>
-      </div>
-    </div>
-
-    <div class="manifesto-grid">
-      <div class="reveal d1">
-        <p class="manifesto-quote">
-          We started this because the Baltics deserve a serious room for low-intervention wine — one that respects the craft, the people, and <em>the truth in the glass.</em>
+    <div class="taxi-grid stagger">
+      <div class="taxi-card reveal">
+        <div class="meta"><span class="left">Ride-hailing</span><span>Recommended</span></div>
+        <h3>Bolt</h3>
+        <div class="sub">The default · upfront pricing</div>
+        <p class="body">
+          On-demand, fixed-price, English UI. Cars usually arrive in 3–6 minutes from the city centre.
         </p>
-        <span class="manifesto-cite">Anton Zhilin · Festival Curator · LOWINE</span>
+        <div class="store-links">
+          <a href="https://apps.apple.com/ee/app/bolt-request-a-ride/id675033630" target="_blank" rel="noopener">iOS</a>
+          <a href="https://play.google.com/store/apps/details?id=ee.mtakso.client&hl=en" target="_blank" rel="noopener">Android</a>
+        </div>
       </div>
 
-      <div class="welcome-note reveal d2">
-        <p>Thank you for making the journey to Rīga for the very first <strong>UNFILTERED Natural Wine Festival</strong>. We are incredibly grateful you are here.</p>
-        <p>Our goal is to establish this as an annual milestone that elevates and expands the low-intervention, natural wine movement across the Baltics. Honestly, we are obsessed with the level of craftsmanship represented by this year's participants — and we want your experience here to be entirely seamless.</p>
-        <p>This page is your operating manual: where to be, when to be there, where to eat, who to call. Save it, share it, and tell us afterwards what we got wrong.</p>
-        <p class="welcome-sig">Cheers to an incredible weekend, — The UNFILTERED Team</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- =================== FACTS BAR =================== -->
-<section class="facts">
-  <div class="wrap">
-    <div class="facts-grid">
-      <div class="fact reveal">
-        <div class="k">Edition</div>
-        <div class="v">01 <small>/ 2026</small></div>
-        <div class="sub">The first one. Founding members only.</div>
-      </div>
-      <div class="fact reveal d1">
-        <div class="k">Dates</div>
-        <div class="v">29 — 30 <small>May</small></div>
-        <div class="sub">Friday side events · Saturday main festival</div>
-      </div>
-      <div class="fact reveal d2">
-        <div class="k">Venue</div>
-        <div class="v">VEF</div>
-        <div class="sub">Former Soviet electronics plant, now creative quarter</div>
-      </div>
-      <div class="fact reveal d3">
-        <div class="k">Format</div>
-        <div class="v">B2B + Public</div>
-        <div class="sub">Trade session 13:00 · Public doors 18:00</div>
+      <div class="taxi-card reveal">
+        <div class="meta"><span class="left">Ride-hailing</span><span>Alternative</span></div>
+        <h3>Forus</h3>
+        <div class="sub">Local backup · widely used</div>
+        <p class="body">
+          A dependable Latvian alternative if Bolt is surging. Same model — open the app, set the pin, accept the fare.
+        </p>
+        <div class="store-links">
+          <a href="https://apps.apple.com/ee/app/taxigo-app/id935061987" target="_blank" rel="noopener">iOS</a>
+          <a href="https://play.google.com/store/apps/details?id=com.taxigo.ee" target="_blank" rel="noopener">Android</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 
-<!-- =================== AGENDA =================== -->
-<section class="agenda sec-pad" id="agenda">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="sec-tag">§ 02 — Programme</div>
-      <div>
-        <h2 class="sec-title">Two days. Four rooms. <span class="accent">One movement.</span></h2>
-        <p class="sec-lede">Friday is a city-wide warm-up — exclusive takeovers, paired dinners and collaborative tastings across Rīga's best rooms. Saturday is the main floor: trade in the afternoon, public in the evening.</p>
-      </div>
-    </div>
-
-    <!-- FRIDAY -->
-    <div class="agenda-day">
-      <div class="day-label reveal">
-        <div class="day-num">FRI</div>
-        <div class="day-name">side events</div>
-        <div class="day-date">29 · 05 · 2026</div>
-      </div>
-      <div class="event-list">
-        <article class="event reveal">
-          <div class="ev-time">18:00</div>
-          <div class="ev-body">
-            <h4>2Naturkinder × <span class="partner">LOWINE</span></h4>
-            <p>The legendary German natural winery takes over the bar — energetic, minimal-intervention wines paired with a one-night-only menu by chef Aleksejs Zaļigins.</p>
-            <div class="links">
-              <a href="tel:+37120609996">+371 206 099 96</a>
-              <a href="https://www.lowinebar.lv" target="_blank" rel="noopener">lowinebar.lv</a>
-            </div>
-          </div>
-          <div class="ev-meta"><span class="tag">Takeover</span></div>
-        </article>
-
-        <article class="event reveal">
-          <div class="ev-time">18:00</div>
-          <div class="ev-body">
-            <h4>Bianka &amp; Daniel × <span class="partner">Vīna Studija Splendid</span></h4>
-            <p>Italian-inspired sharing plates with premium antipasti. Paired Bianka &amp; Daniel selection — five glasses, one evening.</p>
-            <div class="links">
-              <span>€45 per person</span>
-              <a href="https://vina-studija.lv" target="_blank" rel="noopener">vina-studija.lv</a>
-            </div>
-          </div>
-          <div class="ev-meta"><span class="tag">Paired</span></div>
-        </article>
-
-        <article class="event reveal">
-          <div class="ev-time">19:00</div>
-          <div class="ev-body">
-            <h4>Moussé Champagne × <span class="partner">Pavāru Māja</span></h4>
-            <p>A prestigious dining collaboration showcasing precise terroirs. Six-course tasting with the option of a matched champagne selection of six glasses.</p>
-            <div class="links">
-              <span>Menu €79 · pairing +€59</span>
-              <a href="tel:+37127331222">+371 273 312 22</a>
-              <a href="https://pavarumaja.lv" target="_blank" rel="noopener">pavarumaja.lv</a>
-            </div>
-          </div>
-          <div class="ev-meta"><span class="tag">Tasting menu</span></div>
-        </article>
-
-        <article class="event reveal">
-          <div class="ev-time">20:00</div>
-          <div class="ev-body">
-            <h4>OG BTG × <span class="partner">VIETA</span></h4>
-            <p>The finest natural wines by the glass in the Baltics. Raw, unique pours, great company, pure vinyl atmosphere. Walk-in friendly.</p>
-            <div class="links">
-              <a href="tel:+37122031902">+371 220 319 02</a>
-              <a href="https://vietabar.lv" target="_blank" rel="noopener">vietabar.lv</a>
-            </div>
-          </div>
-          <div class="ev-meta"><span class="tag">Walk-in</span></div>
-        </article>
-      </div>
-    </div>
-
-    <!-- SATURDAY -->
-    <div class="agenda-day">
-      <div class="day-label reveal">
-        <div class="day-num">SAT</div>
-        <div class="day-name">festival day</div>
-        <div class="day-date">30 · 05 · 2026</div>
-      </div>
-      <div class="event-list">
-        <article class="event reveal">
-          <div class="ev-time">12:00</div>
-          <div class="ev-body">
-            <h4>Arrival &amp; Preparation <span class="partner">· Winemakers</span></h4>
-            <p>Plenty of unhurried time to set up your table, chill bottles, and prep your space. Specialty coffee waiting for you, brewed by <strong>Rocket Bean Roastery</strong>. Spittoons, ice and fresh water provided on-site.</p>
-          </div>
-          <div class="ev-meta"><span class="tag">Setup</span></div>
-        </article>
-
-        <article class="event featured reveal">
-          <div class="ev-time">13:00<br>↓ 16:00</div>
-          <div class="ev-body">
-            <h4>HoReCa Trade Session <span class="partner">· B2B</span></h4>
-            <p>A dedicated window reserved exclusively for hospitality professionals, importers, sommeliers and trade buyers. Let your business grow with us.</p>
-            <div class="links">
-              <a href="mailto:glouglou@unfiltered.lv">glouglou@unfiltered.lv</a>
-              <span>Trade list on request</span>
-            </div>
-          </div>
-          <div class="ev-meta"><span class="tag">Trade only</span></div>
-        </article>
-
-        <article class="event reveal">
-          <div class="ev-time">16:00<br>↓ 18:00</div>
-          <div class="ev-body">
-            <h4>Winemaker Intermission <span class="partner">· Free time</span></h4>
-            <p>A two-hour break between B2B and public sessions. This time is entirely yours — relax, eat, mingle with fellow winemakers, and recharge before the evening crowd arrives.</p>
-          </div>
-          <div class="ev-meta"><span class="tag">Off-floor</span></div>
-        </article>
-
-        <article class="event featured reveal">
-          <div class="ev-time">18:00<br>↓ 22:00</div>
-          <div class="ev-body">
-            <h4>Public Tasting <span class="partner">· Doors open</span></h4>
-            <p>The main event. Showcase your wines, your craft and your story to an eager, wine-loving public. Smaller pours, longer conversations, real curiosity.</p>
-          </div>
-          <div class="ev-meta"><span class="tag">Public</span></div>
-        </article>
-      </div>
-    </div>
+<!-- ========================================================================
+     SLIDE 4 — RESTAURANTS & BARS (1 / 2)
+     ======================================================================== -->
+<section class="slide" data-title="Restaurants 1/2">
+  <div class="slide-chrome">
+    <span class="left">UNFILTERED · WELCOME GUIDE</span>
+    <span class="right">RIGA · LATVIA</span>
   </div>
-</section>
-
-
-<!-- =================== EAT & DRINK =================== -->
-<section class="eat sec-pad" id="eat">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="sec-tag">§ 03 — Rīga, after hours</div>
-      <div>
-        <h2 class="sec-title">Rooms we'd <span class="accent">actually</span> send you to.</h2>
-        <p class="sec-lede">A short list of places across Rīga where you'll genuinely enjoy a glass and a plate. Tell them you're with UNFILTERED.</p>
-      </div>
-    </div>
+  <div class="slide-content">
+    <div class="section-tag reveal">03 · Restaurants &amp; bars · 01 / 02</div>
+    <h2 class="section-title reveal">Places we recommend.</h2>
+    <p class="section-lede reveal">
+      A short list of rooms across Riga where you'll genuinely enjoy a glass and a plate. Tell them you're with UNFILTERED.
+    </p>
 
     <div class="rest-grid stagger">
-      <article class="rest reveal">
-        <span class="num">01</span>
+
+      <div class="rest-card reveal">
         <h3><a href="https://www.instagram.com/b7_resto/" target="_blank" rel="noopener">B7</a></h3>
         <div class="desc">Small-plate bistro · creative kitchen</div>
         <div class="contact">
-          <a href="tel:+37125772792">+371 25 772 792</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Ausekla+iela+7+Riga" target="_blank" rel="noopener">Ausekļa 7, Rīga</a>
-          <a class="web" href="https://www.instagram.com/b7_resto/" target="_blank" rel="noopener">@b7_resto</a>
+          <div><a href="tel:+37125772792">+371 25 772 792</a></div>
+          <div><a href="https://www.google.com/maps/search/?api=1&query=Ausekla+iela+7+Riga" target="_blank" rel="noopener">Ausekļa 7, Riga</a></div>
+          <div class="web"><a href="https://www.instagram.com/b7_resto/" target="_blank" rel="noopener">@b7_resto</a></div>
         </div>
-      </article>
+      </div>
 
-      <article class="rest reveal">
-        <span class="num">02</span>
+      <div class="rest-card reveal">
         <h3><a href="https://www.shichirin.lv/" target="_blank" rel="noopener">Shichirin</a></h3>
         <div class="desc">Authentic Japanese yakiniku</div>
         <div class="contact">
-          <a href="tel:+37127669900">+371 27 669 900</a>
-          <a href="https://maps.app.goo.gl/wmBA1u31uduaKKJDA" target="_blank" rel="noopener">Rūpniecības 27, Rīga</a>
-          <a class="web" href="https://www.shichirin.lv/" target="_blank" rel="noopener">shichirin.lv</a>
+          <div><a href="tel:+37127669900">+371 27 66 99 00</a></div>
+          <div><a href="https://maps.app.goo.gl/wmBA1u31uduaKKJDA" target="_blank" rel="noopener">Rūpniecības 27, Riga</a></div>
+          <div class="web"><a href="https://www.shichirin.lv/" target="_blank" rel="noopener">shichirin.lv</a></div>
         </div>
-      </article>
+      </div>
 
-      <article class="rest reveal">
-        <span class="num">03</span>
+      <div class="rest-card reveal">
         <h3><a href="https://www.shoyu.lv/" target="_blank" rel="noopener">Shōyu</a></h3>
         <div class="desc">Authentic Japanese ramen shop</div>
         <div class="contact">
-          <a href="tel:+37122009996">+371 22 009 996</a>
-          <a href="https://goo.gl/maps/CaaUWWZZWEs3xuhn7" target="_blank" rel="noopener">Ausekļa 20, Rīga</a>
-          <a class="web" href="https://www.shoyu.lv/" target="_blank" rel="noopener">shoyu.lv</a>
+          <div><a href="tel:+37122009996">+371 22 009 996</a></div>
+          <div><a href="https://goo.gl/maps/CaaUWWZZWEs3xuhn7" target="_blank" rel="noopener">Ausekļa 20, Riga</a></div>
+          <div class="web"><a href="https://www.shoyu.lv/" target="_blank" rel="noopener">shoyu.lv</a></div>
         </div>
-      </article>
+      </div>
 
-      <article class="rest reveal">
-        <span class="num">04</span>
+      <div class="rest-card reveal">
         <h3><a href="https://vina-studija.lv/" target="_blank" rel="noopener">Vīna Studija Splendid</a></h3>
         <div class="desc">Wine studio · sharing plates</div>
         <div class="contact">
-          <a href="https://www.google.com/maps/search/?api=1&query=Vina+Studija+Splendid+Riga" target="_blank" rel="noopener">Elizabetes 61, Rīga</a>
-          <a class="web" href="https://vina-studija.lv/" target="_blank" rel="noopener">vina-studija.lv</a>
+          <div><a href="https://www.google.com/maps/search/?api=1&query=Vina+Studija+Splendid+Riga" target="_blank" rel="noopener">Elizabetes 61, Riga</a></div>
+          <div class="web"><a href="https://vina-studija.lv/" target="_blank" rel="noopener">vina-studija.lv</a></div>
         </div>
-      </article>
+      </div>
 
-      <article class="rest reveal">
-        <span class="num">05</span>
+      <div class="rest-card reveal">
         <h3><a href="https://kicerestaurant.com/en/" target="_blank" rel="noopener">KICE</a></h3>
         <div class="desc">Modern comfort food · chef Max Cekot</div>
         <div class="contact">
-          <a href="tel:+37120455555">+371 20 455 555</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Kice+restaurant+Jelgavas+42+Riga" target="_blank" rel="noopener">Jelgavas 42, Rīga</a>
-          <a class="web" href="https://kicerestaurant.com/en/" target="_blank" rel="noopener">kicerestaurant.com</a>
+          <div><a href="tel:+37120455555">+371 20 455 555</a></div>
+          <div><a href="https://www.google.com/maps/search/?api=1&query=Kice+restaurant+Jelgavas+42+Riga" target="_blank" rel="noopener">Jelgavas 42, Riga</a></div>
+          <div class="web"><a href="https://kicerestaurant.com/en/" target="_blank" rel="noopener">kicerestaurant.com</a></div>
         </div>
-      </article>
+      </div>
 
-      <article class="rest reveal">
-        <span class="num">06</span>
+      <div class="rest-card reveal">
         <h3><a href="https://www.instagram.com/legsortears/" target="_blank" rel="noopener">Legs or Tears</a></h3>
         <div class="desc">Family-run cellar · natural &amp; classic</div>
         <div class="contact">
-          <a href="tel:+37127827784">+371 27 827 784</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Laipu+iela+2+Riga" target="_blank" rel="noopener">Laipu 2/4, Rīga</a>
-          <a class="web" href="https://www.instagram.com/legsortears/" target="_blank" rel="noopener">@legsortears</a>
+          <div><a href="tel:+37127827784">+371 27 827 784</a></div>
+          <div><a href="https://www.google.com/maps/search/?api=1&query=Laipu+iela+2+Riga" target="_blank" rel="noopener">Laipu iela 2/4, Riga</a></div>
+          <div class="web"><a href="https://www.instagram.com/legsortears/" target="_blank" rel="noopener">@legsortears</a></div>
         </div>
-      </article>
+      </div>
 
-      <article class="rest reveal">
-        <span class="num">07</span>
+      <div class="rest-card reveal">
         <h3><a href="https://burzujs.lv/" target="_blank" rel="noopener">Buržujs</a></h3>
         <div class="desc">Lifestyle restaurant &amp; oyster bar</div>
         <div class="contact">
-          <a href="tel:+37129343355">+371 29 343 355</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Burzujs+Dzirnavu+84+Riga" target="_blank" rel="noopener">Dzirnavu 84 · Berga Bazārs</a>
-          <a class="web" href="https://burzujs.lv/" target="_blank" rel="noopener">burzujs.lv</a>
+          <div><a href="tel:+37129343355">+371 29 343 355</a></div>
+          <div><a href="https://www.google.com/maps/search/?api=1&query=Burzujs+Dzirnavu+84+Riga" target="_blank" rel="noopener">Dzirnavu 84 · Berga Bazārs</a></div>
+          <div class="web"><a href="https://burzujs.lv/" target="_blank" rel="noopener">burzujs.lv</a></div>
         </div>
-      </article>
+      </div>
 
-      <article class="rest reveal">
-        <span class="num">08</span>
+      <div class="rest-card reveal">
         <h3><a href="https://vinabars.lv/lv/" target="_blank" rel="noopener">Garage</a></h3>
         <div class="desc">Wine bar · seasonal kitchen</div>
         <div class="contact">
-          <a href="tel:+37126628833">+371 26 628 833</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Garage+wine+bar+Elizabetes+83+Riga" target="_blank" rel="noopener">Elizabetes 83, Rīga</a>
-          <a class="web" href="https://vinabars.lv/lv/" target="_blank" rel="noopener">vinabars.lv</a>
+          <div><a href="tel:+37126628833">+371 26 628 833</a></div>
+          <div><a href="https://www.google.com/maps/search/?api=1&query=Garage+wine+bar+Elizabetes+83+Riga" target="_blank" rel="noopener">Elizabetes 83, Riga</a></div>
+          <div class="web"><a href="https://vinabars.lv/lv/" target="_blank" rel="noopener">vinabars.lv</a></div>
         </div>
-      </article>
+      </div>
 
-      <article class="rest reveal">
-        <span class="num">09</span>
+      <div class="rest-card reveal">
         <h3><a href="https://vietabar.lv/" target="_blank" rel="noopener">VIETA</a></h3>
         <div class="desc">Natural BTG · vinyl atmosphere</div>
         <div class="contact">
-          <a href="tel:+37122031902">+371 22 031 902</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Vieta+bar+Riga" target="_blank" rel="noopener">Vecrīga, Rīga</a>
-          <a class="web" href="https://vietabar.lv/" target="_blank" rel="noopener">vietabar.lv</a>
+          <div><a href="tel:+37122031902">+371 22 031 902</a></div>
+          <div><a href="https://www.google.com/maps/search/?api=1&query=Vieta+bar+Riga" target="_blank" rel="noopener">Vecrīga, Riga</a></div>
+          <div class="web"><a href="https://vietabar.lv/" target="_blank" rel="noopener">vietabar.lv</a></div>
         </div>
-      </article>
+      </div>
 
-      <article class="rest reveal">
-        <span class="num">10</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================================================================
+     SLIDE 5 — RESTAURANTS & BARS (2 / 2)
+     ======================================================================== -->
+<section class="slide" data-title="Restaurants 2/2">
+  <div class="slide-chrome">
+    <span class="left">UNFILTERED · WELCOME GUIDE</span>
+    <span class="right">RIGA · LATVIA</span>
+  </div>
+  <div class="slide-content">
+    <div class="section-tag reveal">03 · Restaurants &amp; bars · 02 / 02</div>
+    <h2 class="section-title reveal">More good rooms.</h2>
+    <p class="section-lede reveal">
+      Continued list — fine dining, brasserie classics, modern Italian, and the cellars worth sitting in.
+    </p>
+
+    <div class="rest-grid stagger">
+
+      <div class="rest-card reveal">
         <h3><a href="https://www.instagram.com/truff.le.pig/" target="_blank" rel="noopener">Truff Le Pig</a></h3>
         <div class="desc">Natural wine &amp; grower champagne</div>
         <div class="contact">
-          <a href="https://www.google.com/maps/search/?api=1&query=Truff+Le+Pig+Antonijas+11+Riga" target="_blank" rel="noopener">Antonijas 11, Rīga</a>
-          <a class="web" href="https://www.instagram.com/truff.le.pig/" target="_blank" rel="noopener">@truff.le.pig</a>
+          <div><a href="https://www.google.com/maps/search/?api=1&query=Truff+Le+Pig+Antonijas+11+Riga" target="_blank" rel="noopener">Antonijas 11, Riga</a></div>
+          <div class="web"><a href="https://www.instagram.com/truff.le.pig/" target="_blank" rel="noopener">@truff.le.pig</a></div>
         </div>
-      </article>
+      </div>
 
-      <article class="rest reveal">
-        <span class="num">11</span>
+      <div class="rest-card reveal">
         <h3><a href="https://noblewine.lv/en/noble-wine-bar/" target="_blank" rel="noopener">Noble Wine</a></h3>
-        <div class="desc">Wines &amp; gourmet snacks · Art Nouveau views</div>
+        <div class="desc">Wines, gourmet snacks · Art Nouveau views</div>
         <div class="contact">
-          <a href="tel:+37128007772">+371 28 007 772</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Noble+Wine+bar+Elizabetes+33+Riga" target="_blank" rel="noopener">Elizabetes 33, Rīga</a>
-          <a class="web" href="https://noblewine.lv/en/noble-wine-bar/" target="_blank" rel="noopener">noblewine.lv</a>
+          <div><a href="tel:+37128007772">+371 28 007 772</a></div>
+          <div><a href="https://www.google.com/maps/search/?api=1&query=Noble+Wine+bar+Elizabetes+33+Riga" target="_blank" rel="noopener">Elizabetes 33, Riga</a></div>
+          <div class="web"><a href="https://noblewine.lv/en/noble-wine-bar/" target="_blank" rel="noopener">noblewine.lv</a></div>
         </div>
-      </article>
+      </div>
 
-      <article class="rest reveal">
-        <span class="num">12</span>
+      <div class="rest-card reveal">
         <h3><a href="https://www.instagram.com/maijasbraserija/" target="_blank" rel="noopener">Maijas Brasserie</a></h3>
         <div class="desc">Brasserie classics · neighbourhood favourite</div>
         <div class="contact">
-          <a class="web" href="https://www.instagram.com/maijasbraserija/" target="_blank" rel="noopener">@maijasbraserija</a>
+          <div class="web"><a href="https://www.instagram.com/maijasbraserija/" target="_blank" rel="noopener">@maijasbraserija</a></div>
         </div>
-      </article>
+      </div>
 
-      <article class="rest reveal">
-        <span class="num">13</span>
+      <div class="rest-card reveal">
         <h3><a href="https://www.instagram.com/winecollectors.lv/" target="_blank" rel="noopener">Wine Collectors</a></h3>
         <div class="desc">Tight cellar · serious bottles</div>
         <div class="contact">
-          <a href="tel:+37122018800">+371 22 018 800</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Elizabetes+iela+41+Riga" target="_blank" rel="noopener">Elizabetes 41/43, Rīga</a>
-          <a class="web" href="https://www.instagram.com/winecollectors.lv/" target="_blank" rel="noopener">@winecollectors.lv</a>
+          <div><a href="tel:+37122018800">+371 22 018 800</a></div>
+          <div><a href="https://www.google.com/maps/search/?api=1&query=Elizabetes+iela+41+Riga" target="_blank" rel="noopener">Elizabetes 41/43, Riga</a></div>
+          <div class="web"><a href="https://www.instagram.com/winecollectors.lv/" target="_blank" rel="noopener">@winecollectors.lv</a></div>
         </div>
-      </article>
+      </div>
 
-      <article class="rest reveal">
-        <span class="num">14</span>
+      <div class="rest-card reveal">
         <h3><a href="https://madame-mei.com/" target="_blank" rel="noopener">Madame Mei</a></h3>
         <div class="desc">Vietnamese brasserie · Indochine cuisine</div>
         <div class="contact">
-          <a href="tel:+37124333700">+371 24 333 700</a>
-          <a href="https://maps.app.goo.gl/aKksHXCkiKgshoCW7" target="_blank" rel="noopener">Antonijas 10, Rīga</a>
-          <a class="web" href="https://madame-mei.com/" target="_blank" rel="noopener">madame-mei.com</a>
+          <div><a href="tel:+37124333700">+371 24 333 700</a></div>
+          <div><a href="https://maps.app.goo.gl/aKksHXCkiKgshoCW7" target="_blank" rel="noopener">Antonijas 10, Riga</a></div>
+          <div class="web"><a href="https://madame-mei.com/" target="_blank" rel="noopener">madame-mei.com</a></div>
         </div>
-      </article>
+      </div>
 
-      <article class="rest reveal">
-        <span class="num">15</span>
+      <div class="rest-card reveal">
         <h3><a href="https://snatch.lv/" target="_blank" rel="noopener">Snatch</a></h3>
         <div class="desc">Bold modern Italian · Bib Gourmand</div>
         <div class="contact">
-          <a href="tel:+37127343430">+371 27 343 430</a>
-          <a href="https://maps.app.goo.gl/dinCHxUF4dH2aNvu7" target="_blank" rel="noopener">Elizabetes 39, Rīga</a>
-          <a class="web" href="https://snatch.lv/" target="_blank" rel="noopener">snatch.lv</a>
+          <div><a href="tel:+37127343430">+371 27 34 34 30</a></div>
+          <div><a href="https://maps.app.goo.gl/dinCHxUF4dH2aNvu7" target="_blank" rel="noopener">Elizabetes 39, Riga</a></div>
+          <div class="web"><a href="https://snatch.lv/" target="_blank" rel="noopener">snatch.lv</a></div>
         </div>
-      </article>
+      </div>
 
-      <article class="rest reveal">
-        <span class="num">16</span>
+      <div class="rest-card reveal">
         <h3><a href="https://thecatch.lv/" target="_blank" rel="noopener">Catch</a></h3>
         <div class="desc">Modern Japanese izakaya</div>
         <div class="contact">
-          <a href="tel:+37127770091">+371 27 770 091</a>
-          <a href="https://maps.app.goo.gl/D67xH81sQgCfh2Yw9" target="_blank" rel="noopener">Antonijas 12, Rīga</a>
-          <a class="web" href="https://thecatch.lv/" target="_blank" rel="noopener">thecatch.lv</a>
+          <div><a href="tel:+37127770091">+371 27 77 00 91</a></div>
+          <div><a href="https://maps.app.goo.gl/D67xH81sQgCfh2Yw9" target="_blank" rel="noopener">Antonijas 12, Riga</a></div>
+          <div class="web"><a href="https://thecatch.lv/" target="_blank" rel="noopener">thecatch.lv</a></div>
         </div>
-      </article>
+      </div>
 
-      <article class="rest reveal">
-        <span class="num">17</span>
+      <div class="rest-card reveal">
         <h3><a href="https://babo.lv/?lang=en" target="_blank" rel="noopener">Babo</a></h3>
         <div class="desc">Neighbourhood bistro · modern plates</div>
         <div class="contact">
-          <a href="https://www.google.com/maps/search/?api=1&query=Babo+restaurant+Riga" target="_blank" rel="noopener">Rīga</a>
-          <a class="web" href="https://babo.lv/?lang=en" target="_blank" rel="noopener">babo.lv</a>
+          <div><a href="https://www.google.com/maps/search/?api=1&query=Babo+restaurant+Riga" target="_blank" rel="noopener">Riga</a></div>
+          <div class="web"><a href="https://babo.lv/?lang=en" target="_blank" rel="noopener">babo.lv</a></div>
         </div>
-      </article>
+      </div>
 
-      <article class="rest reveal">
-        <span class="num">18</span>
+      <div class="rest-card reveal">
         <h3><a href="https://rivierarestorans.lv/" target="_blank" rel="noopener">Riviera</a></h3>
         <div class="desc">Mediterranean fine dining · 450+ wines</div>
         <div class="contact">
-          <a href="tel:+37120280111">+371 20 280 111</a>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=Dzirnavu+iela+31,+Riga,+Latvia" target="_blank" rel="noopener">Dzirnavu 31, Rīga</a>
-          <a class="web" href="https://rivierarestorans.lv/" target="_blank" rel="noopener">rivierarestorans.lv</a>
+          <div><a href="tel:+37120280111">+371 20 280 111</a></div>
+          <div><a href="https://www.google.com/maps/dir/?api=1&destination=Dzirnavu+iela+31,+Riga,+Latvia" target="_blank" rel="noopener">Dzirnavu 31, Riga</a></div>
+          <div class="web"><a href="https://rivierarestorans.lv/" target="_blank" rel="noopener">rivierarestorans.lv</a></div>
         </div>
-      </article>
+      </div>
 
     </div>
   </div>
 </section>
 
 
-<!-- =================== SOUNDS =================== -->
-<section class="sounds sec-pad" id="sounds">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="sec-tag">§ 04 — Vinyl soundtrack</div>
-      <div>
-        <h2 class="sec-title">All evening <span class="accent">on the deck.</span></h2>
-        <p class="sec-lede">A stellar line-up of vinyl DJs and live artists keeps the energy right from doors-open through close.</p>
-      </div>
-    </div>
-
-    <div class="dj-list">
-      <div class="dj reveal">
-        <div class="dj-time">18:00 → 20:00</div>
-        <div class="dj-name">Nikulin</div>
-        <div class="dj-kind">vinyl set</div>
-      </div>
-      <div class="dj reveal">
-        <div class="dj-time">20:00 → 21:30</div>
-        <div class="dj-name">La Fleur Du Soleil</div>
-        <div class="dj-kind">vinyl set</div>
-      </div>
-      <div class="dj reveal">
-        <div class="dj-time">21:30 → 22:30</div>
-        <div class="dj-name">ASM · A State of Mind</div>
-        <div class="dj-kind">live performance</div>
-      </div>
-      <div class="dj reveal">
-        <div class="dj-time">22:30 → late</div>
-        <div class="dj-name">RAF (LT)</div>
-        <div class="dj-kind">closing set</div>
-      </div>
-    </div>
+<!-- ========================================================================
+     SLIDE 6 — AGENDA · FRIDAY 29.05
+     ======================================================================== -->
+<section class="slide" data-title="Friday Agenda">
+  <div class="slide-chrome">
+    <span class="left">UNFILTERED · WELCOME GUIDE</span>
+    <span class="right">RIGA · LATVIA</span>
   </div>
-</section>
-
-
-<!-- =================== VENUE / GETTING THERE =================== -->
-<section class="venue sec-pad" id="venue">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="sec-tag">§ 05 — Getting there</div>
-      <div>
-        <h2 class="sec-title">The venue, the ride, <span class="accent">the door.</span></h2>
-        <p class="sec-lede">The festival lives at VEF KVARTĀLS — a former Soviet electronics plant turned creative quarter, a short ride north-east of the centre. Stick to ride-hailing apps; both work in English and quote upfront.</p>
-      </div>
-    </div>
-
-    <div class="venue-grid">
-      <div class="venue-block reveal">
-        <div class="pin">Festival HQ</div>
-        <div class="venue-name">
-          VEF Kvartāls
-          <span class="addr">Ūnijas iela 8 · Rīga</span>
-        </div>
-        <p class="desc">
-          A former Soviet electronics plant turned creative quarter, a short ride north-east of the centre. Stick to ride-hailing apps; both work in English and quote the fare upfront.
-        </p>
-        <div class="venue-stats">
-          <div>
-            <div class="k">From city centre</div>
-            <div class="v">€10<small>–12</small></div>
-          </div>
-          <div>
-            <div class="k">Drive time</div>
-            <div class="v">10<small>–15 min</small></div>
-          </div>
-          <div>
-            <div class="k">Coordinates</div>
-            <div class="v">56.9°N</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="taxis">
-        <div class="taxi reveal d1">
-          <div class="label">Ride-hailing · default</div>
-          <h3>Bolt</h3>
-          <span class="badge">Recommended</span>
-          <p>On-demand, fixed-price, English UI. Cars usually arrive in 3–6 minutes from the city centre.</p>
-          <div class="stores">
-            <a href="https://apps.apple.com/ee/app/bolt-request-a-ride/id675033630" target="_blank" rel="noopener">iOS</a>
-            <a href="https://play.google.com/store/apps/details?id=ee.mtakso.client&hl=en" target="_blank" rel="noopener">Android</a>
-          </div>
-        </div>
-        <div class="taxi reveal d2">
-          <div class="label">Ride-hailing · backup</div>
-          <h3>Forus</h3>
-          <span class="badge alt">Alternative</span>
-          <p>A dependable Latvian alternative if Bolt is surging. Same model — open the app, set the pin, accept the fare.</p>
-          <div class="stores">
-            <a href="https://apps.apple.com/ee/app/taxigo-app/id935061987" target="_blank" rel="noopener">iOS</a>
-            <a href="https://play.google.com/store/apps/details?id=com.taxigo.ee" target="_blank" rel="noopener">Android</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- =================== CLOSING / CONTACT =================== -->
-<section class="closing" id="closing">
-  <div class="wrap">
-    <img class="closing-wordmark reveal" src="wordmark.png" alt="UNFILTERED">
-    <h2 class="closing-headline reveal d1">
-      See you<br>in <span class="accent">Rīga.</span>
-    </h2>
-    <p class="thanks reveal d2">
-      <span class="gold">We love you, and we are so excited to host you in Rīga.</span> UNFILTERED is a LOWINE project, curated by Anton Zhilin. <span class="gold">Less pretension, more substance.</span>
+  <div class="slide-content">
+    <div class="section-tag reveal">04 · Agenda · Friday 29.05</div>
+    <h2 class="section-title reveal">Side events.<br>Four rooms, one night.</h2>
+    <p class="section-lede reveal">
+      Friday is a city-wide warm-up — exclusive takeovers, paired dinners and collaborative tastings hosted by Riga's top venues. Pace yourself.
     </p>
 
-    <div class="wa-cta reveal d2">
-      <div>
-        <div class="label">Festival WhatsApp Group · join now</div>
-        <div class="title">The main channel for real-time announcements.</div>
-        <p>Logistics updates, on-site support and last-minute changes — all in one place. Drop a quick message with your name and winery once you're in.</p>
+    <div class="timeline stagger">
+      <div class="event-row reveal">
+        <div class="time">18:00</div>
+        <div>
+          <h4>2Naturkinder × <span class="partner">LOWINE</span></h4>
+          <p>The legendary German natural winery takes over the bar — energetic, minimal-intervention wines paired with a one-night-only menu by chef Aleksejs Zaļigins.</p>
+          <div class="meta">Reservations · <a href="tel:+37120609996">+371 20609996</a> · <a href="https://www.lowinebar.lv" target="_blank" rel="noopener">lowinebar.lv</a></div>
+        </div>
       </div>
-      <a class="btn btn-primary" href="https://chat.whatsapp.com/KP6M9wsCf9m7HUUBA42FDS" target="_blank" rel="noopener">Join the group <span class="arrow">→</span></a>
+
+      <div class="event-row reveal">
+        <div class="time">18:00</div>
+        <div>
+          <h4>Bianka &amp; Daniel × <span class="partner">Vīna Studija Splendid</span></h4>
+          <p>Italian-inspired sharing plates with premium antipasti. Paired Bianka &amp; Daniel selection of five glasses.</p>
+          <div class="meta">€45 per person · <a href="https://vina-studija.lv" target="_blank" rel="noopener">vina-studija.lv</a></div>
+        </div>
+      </div>
+
+      <div class="event-row reveal">
+        <div class="time">19:00</div>
+        <div>
+          <h4>Moussé Champagne × <span class="partner">Pavāru Māja</span></h4>
+          <p>A prestigious dining collaboration showcasing precise terroirs. Six-course tasting menu with the option of a matched champagne selection of six glasses.</p>
+          <div class="meta">Menu €79 · Pairing +€59 · <a href="tel:+37127331222">+371 27 331 222</a> · <a href="https://pavarumaja.lv" target="_blank" rel="noopener">pavarumaja.lv</a></div>
+        </div>
+      </div>
+
+      <div class="event-row reveal">
+        <div class="time">20:00</div>
+        <div>
+          <h4>OG BTG × <span class="partner">VIETA</span></h4>
+          <p>The finest natural wines by the glass in the Baltics. Raw, unique pours, great company, pure vinyl atmosphere. Walk-in friendly.</p>
+          <div class="meta">Reservations · <a href="tel:+37122031902">+371 22031902</a> · <a href="https://vietabar.lv" target="_blank" rel="noopener">vietabar.lv</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================================================================
+     SLIDE 7 — SATURDAY TIMELINE (festival day, 4 time slots)
+     ======================================================================== -->
+<section class="slide" data-title="Saturday Timeline">
+  <div class="slide-chrome">
+    <span class="left">UNFILTERED · WELCOME GUIDE</span>
+    <span class="right">RIGA · LATVIA</span>
+  </div>
+  <div class="slide-content">
+    <div class="section-tag reveal">05 · Agenda · Saturday 30.05</div>
+    <h2 class="section-title reveal">Festival day.<br>VEF KVARTĀLS.</h2>
+    <p class="section-lede reveal">
+      The main event. Below is your full day — from arrival and prep through public doors.
+    </p>
+
+    <div class="timeline stagger">
+      <div class="event-row reveal">
+        <div class="time">12:00</div>
+        <div>
+          <h4>Arrival &amp; Preparation</h4>
+          <p>We suggest arriving at 12:00 — plenty of unhurried time to set up your table, chill bottles, and prep your space. Specialty coffee waiting for you, brewed by <strong>Rocket Bean Roastery</strong>.</p>
+          <div class="meta">SPITTOONS · ICE · FRESH WATER — ALL PROVIDED ON-SITE</div>
+        </div>
+      </div>
+
+      <div class="event-row featured reveal">
+        <div class="time">13:00 ↓ 16:00</div>
+        <div>
+          <h4>HoReCa Trade Session · <span class="partner">B2B</span></h4>
+          <p>A dedicated window reserved exclusively for hospitality professionals, importers, sommeliers and trade buyers. Let your business grow with us.</p>
+          <div class="meta">Trade list on request · <a href="mailto:glouglou@unfiltered.lv">glouglou@unfiltered.lv</a></div>
+        </div>
+      </div>
+
+      <div class="event-row reveal">
+        <div class="time">16:00 ↓ 18:00</div>
+        <div>
+          <h4>Winemaker Intermission · <span class="partner">Free time</span></h4>
+          <p>A two-hour break between B2B and public sessions. This time is entirely yours — relax, eat, mingle with fellow winemakers, and recharge before the evening crowd arrives.</p>
+        </div>
+      </div>
+
+      <div class="event-row featured reveal">
+        <div class="time">18:00 ↓ 22:00</div>
+        <div>
+          <h4>Public Tasting · <span class="partner">Doors open</span></h4>
+          <p>The main event. Showcase your wines, your craft and your story to an eager, wine-loving public. Smaller pours, longer conversations, real curiosity.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================================================================
+     SLIDE 8 — SATURDAY · FOOD
+     ======================================================================== -->
+<section class="slide" data-title="Food">
+  <div class="slide-chrome">
+    <span class="left">UNFILTERED · WELCOME GUIDE</span>
+    <span class="right">RIGA · LATVIA</span>
+  </div>
+  <div class="slide-content">
+    <div class="section-tag reveal">06 · Saturday · Food</div>
+    <h2 class="section-title reveal">Eat well.<br>We'll handle the rest.</h2>
+    <p class="section-lede reveal">
+      The best in town are setting up kitchens at VEF KVARTĀLS — exceptional food in thoughtful, smaller portions, so you can sample everything alongside the wines.
+    </p>
+
+    <div class="food-grid stagger">
+      <div class="food-card reveal">
+        <h4>LOWINE</h4>
+        <p>Carefully curated festival dishes.</p>
+      </div>
+      <div class="food-card reveal">
+        <h4>Buržujs</h4>
+        <p>Fresh, premium oysters.</p>
+      </div>
+      <div class="food-card reveal">
+        <h4>Plov &amp; Lamb Chops</h4>
+        <p>Rich, deeply flavorful, flame-cooked.</p>
+      </div>
     </div>
 
-    <div class="contacts">
-      <div class="contact-card reveal d2">
-        <div class="role">Direct contact · WhatsApp</div>
+    <div class="callout reveal">
+      <span class="label">Your meals &amp; hydration</span>
+      <div class="callout-body">
+        Your food during the event is fully taken care of. Fresh water is available at all times — please stay hydrated throughout the day.
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================================================================
+     SLIDE 9 — VINYL SOUNDTRACK
+     ======================================================================== -->
+<section class="slide" data-title="Vinyl Soundtrack">
+  <div class="slide-chrome">
+    <span class="left">UNFILTERED · WELCOME GUIDE</span>
+    <span class="right">RIGA · LATVIA</span>
+  </div>
+  <div class="slide-content">
+    <div class="section-tag reveal">07 · The vinyl soundtrack</div>
+    <h2 class="section-title reveal">All evening on the deck.</h2>
+    <p class="section-lede reveal">
+      A stellar line-up of vinyl DJs and live artists keeps the energy right from doors-open through close.
+    </p>
+
+    <div class="dj-list stagger">
+      <div class="dj-row reveal">
+        <div class="slot">18:00 → 20:00</div>
+        <div class="artist">Nikulin</div>
+        <div class="kind">Vinyl Set</div>
+      </div>
+      <div class="dj-row reveal">
+        <div class="slot">20:00 → 21:30</div>
+        <div class="artist">La Fleur Du Soleil</div>
+        <div class="kind">Vinyl Set</div>
+      </div>
+      <div class="dj-row reveal">
+        <div class="slot">21:30 → 22:30</div>
+        <div class="artist">ASM · A State of Mind</div>
+        <div class="kind">Live Performance</div>
+      </div>
+      <div class="dj-row reveal">
+        <div class="slot">22:30 → Late</div>
+        <div class="artist">RAF (LT)</div>
+        <div class="kind">Closing Set</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================================================================
+     SLIDE 9 — CLOSING (See you in Rīga + WhatsApp CTA + Direct contacts)
+     ======================================================================== -->
+<section class="slide closing on-blue" data-title="See you in Rīga">
+  <div class="slide-chrome">
+    <span class="left">UNFILTERED · WELCOME GUIDE</span>
+    <span class="right">FIN.</span>
+  </div>
+  <div class="slide-content">
+    <h1 class="reveal">See you<br>in <span class="gold">Rīga.</span></h1>
+    <p class="thank-you reveal">
+      <span class="gold">We love you, and we are so excited to host you in Riga.</span> UNFILTERED is a LOWINE project, curated by Anton Zhilin. <span class="gold">Less pretension, more substance.</span>
+    </p>
+
+    <div class="whatsapp-cta reveal">
+      <span class="label">Festival WhatsApp Group · Join Now</span>
+      <p>Our main channel for real-time announcements, logistics updates, and on-site support during your stay. Once you join, drop a quick message with your name and winery.</p>
+      <a class="join-btn" href="https://chat.whatsapp.com/KP6M9wsCf9m7HUUBA42FDS" target="_blank" rel="noopener">→ Click here to join the group</a>
+    </div>
+
+    <div class="support-grid stagger">
+      <div class="support-card reveal">
+        <div class="role">Direct Contact · WhatsApp</div>
         <div class="name">Anton</div>
         <div class="phone"><a href="https://wa.me/37122071717" target="_blank" rel="noopener">+371 22 071 717</a></div>
         <div class="channel">For one-on-one assistance</div>
       </div>
-      <div class="contact-card reveal d3">
-        <div class="role">Direct contact · WhatsApp</div>
+      <div class="support-card reveal">
+        <div class="role">Direct Contact · WhatsApp</div>
         <div class="name">Ludmila</div>
         <div class="phone"><a href="https://wa.me/37126727870" target="_blank" rel="noopener">+371 26 727 870</a></div>
         <div class="channel">For one-on-one assistance</div>
       </div>
-      <div class="contact-card meet reveal d4">
-        <div class="role">Meeting point · if all else fails</div>
-        <div class="name">LOWINE</div>
-        <div class="phone">Dzirnavu 43 · Rīga</div>
-        <div class="channel">The fallback rendezvous</div>
-      </div>
+    </div>
+
+    <div class="meeting-banner reveal">
+      <div class="label">Meeting Point · If All Else Fails</div>
+      <div class="name">LOWINE</div>
+      <div class="addr">Dzirnavu 43 · Riga</div>
     </div>
   </div>
 </section>
 
 
-<!-- =================== SPONSORS =================== -->
-<section class="sponsors">
-  <div class="wrap">
-    <h2 class="reveal">Thank you to our <span class="accent">sponsors &amp; supporters.</span></h2>
-    <p class="intro reveal d1">Without your belief in our vision, dedication, and support, the very first edition of UNFILTERED would not have been possible. You helped us lay the foundation for the natural wine movement in the Baltics — thank you for making it happen.</p>
-    <div class="sponsor-grid">
-      <div class="sponsor reveal d1">
-        <h4>Gabriel-Glas</h4>
+<!-- ========================================================================
+     SLIDE 10 — SPONSORS THANK YOU
+     ======================================================================== -->
+<section class="slide sponsors-page on-blue" data-title="Sponsors">
+  <div class="slide-chrome">
+    <span class="left">UNFILTERED · WELCOME GUIDE</span>
+    <span class="right">FIN.</span>
+  </div>
+  <div class="slide-content">
+    <h1 class="reveal">Thank you to our<br><span class="gold">sponsors &amp; supporters.</span></h1>
+
+    <p class="intro reveal">
+      Without your belief in our vision, dedication, and support, the very first edition of UNFILTERED would not have been possible.
+    </p>
+    <p class="intro reveal">
+      You helped us lay the foundation for the natural wine movement in the Baltics, and we are deeply grateful for your partnership. <span class="gold">Thank you for making it happen.</span>
+    </p>
+
+    <div class="sponsors-section-label reveal">Our Key Partners</div>
+
+    <div class="sponsors-grid stagger">
+      <div class="sponsor-card reveal">
+        <h3>Gabriel-Glas</h3>
         <p>Providing the ultimate glassware to ensure every wine is tasted at its absolute best.</p>
       </div>
-      <div class="sponsor reveal d2">
-        <h4>SEO VILLAGE</h4>
+      <div class="sponsor-card reveal">
+        <h3>SEO VILLAGE</h3>
         <p>Powers our digital visibility, ensuring our message reaches natural wine lovers across the region.</p>
       </div>
-      <div class="sponsor reveal d3">
-        <h4>LOWINE</h4>
-        <p>Bringing the community together, driving the local natural wine scene, co-curating the heart of our hospitality.</p>
+      <div class="sponsor-card reveal">
+        <h3>LOWINE</h3>
+        <p>Bringing the community together, driving the local natural wine scene, and co-curating the heart of our hospitality.</p>
       </div>
-      <div class="sponsor reveal d4">
-        <h4>Akvile</h4>
-        <p>Keeping our winemakers and guests perfectly hydrated with premium, natural mineral water throughout the festival.</p>
+      <div class="sponsor-card reveal">
+        <h3>Akvile</h3>
+        <p>Keeping our winemakers and guests perfectly hydrated with premium, natural mineral water throughout the entire festival.</p>
       </div>
     </div>
   </div>
 </section>
-
-
-<footer>
-  <div class="wrap foot-grid">
-    <div class="foot-block">
-      <div class="k">Web</div>
-      <a href="https://unfiltered.lv" target="_blank" rel="noopener">unfiltered.lv</a>
-    </div>
-    <div class="foot-block">
-      <div class="k">Mail</div>
-      <a href="mailto:glouglou@unfiltered.lv">glouglou@unfiltered.lv</a>
-    </div>
-    <div class="foot-block">
-      <div class="k">Phone</div>
-      <a href="tel:+37125400646">+371 25 400 646</a>
-    </div>
-    <div class="foot-block">
-      <div class="k">Instagram</div>
-      <a href="https://instagram.com/unfilteredfest" target="_blank" rel="noopener">@unfilteredfest</a>
-    </div>
-  </div>
-  <div class="wrap foot">
-    <div>© 2026 UNFILTERED · A <span class="gold">LOWINE</span> project · Curated by Anton Zhilin</div>
-    <div>Brand Book · Edition 01 · 2026 · Rīga, Latvia</div>
-  </div>
-</footer>
 
 
 <script>
-/* Scroll reveal */
-const io = new IntersectionObserver((entries) => {
-  entries.forEach((e) => {
-    if (e.isIntersecting) {
-      e.target.classList.add('in');
-      io.unobserve(e.target);
-    }
-  });
-}, { rootMargin: '-8% 0px', threshold: 0.05 });
-document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+/* =========================================================================
+   SlidePresentation controller
+   - IntersectionObserver triggers .visible on slides for animations
+   - Keyboard navigation: arrows, Space, PgUp/PgDn, Home/End, digits
+   - Touch swipe navigation
+   - Progress bar + nav dots + slide counter + dark-aware UI flip
+   ========================================================================= */
+class SlidePresentation {
+  constructor() {
+    this.slides = Array.from(document.querySelectorAll('.slide'));
+    this.total = this.slides.length;
+    this.currentIndex = 0;
+    this.body = document.body;
+    this.progressBar = document.getElementById('progressBar');
+    this.navDotsContainer = document.getElementById('navDots');
+    this.slideCount = document.getElementById('slideCount');
 
-/* Progress bar + nav theme */
-const progress = document.getElementById('progress');
-const nav = document.getElementById('nav');
-const darkSections = ['#top', '.eat', '.closing'];
-const ranges = () => darkSections
-  .map(s => document.querySelector(s))
-  .filter(Boolean)
-  .map(el => {
-    const r = el.getBoundingClientRect();
-    return { top: r.top + window.scrollY, bottom: r.top + window.scrollY + r.height };
-  });
-let dark = ranges();
-window.addEventListener('resize', () => { dark = ranges(); });
+    this.buildNavDots();
+    this.setupIntersectionObserver();
+    this.setupKeyboardNav();
+    this.setupTouchNav();
+    this.updateProgress();
+    this.updateChromeForCurrent();
+  }
 
-function onScroll() {
-  const h = document.documentElement;
-  const max = h.scrollHeight - h.clientHeight;
-  const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
-  progress.style.width = pct + '%';
+  buildNavDots() {
+    // Clear first — re-opening a saved file otherwise duplicates dots
+    this.navDotsContainer.innerHTML = '';
+    this.slides.forEach((slide, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'nav-dot';
+      dot.setAttribute('aria-label', `Go to slide ${i + 1}: ${slide.dataset.title || ''}`);
+      dot.addEventListener('click', () => this.goTo(i));
+      this.navDotsContainer.appendChild(dot);
+    });
+    this.navDots = Array.from(this.navDotsContainer.children);
+  }
 
-  const y = window.scrollY + 30;
-  const isDark = dark.some(r => y >= r.top && y < r.bottom);
-  nav.classList.toggle('on-dark', isDark);
-  nav.classList.toggle('scrolled', window.scrollY > 60);
+  setupIntersectionObserver() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.intersectionRatio >= 0.5) {
+          entry.target.classList.add('visible');
+          this.currentIndex = this.slides.indexOf(entry.target);
+          this.updateProgress();
+          this.updateChromeForCurrent();
+        }
+      });
+    }, { threshold: [0.5] });
+    this.slides.forEach((s) => io.observe(s));
+  }
+
+  setupKeyboardNav() {
+    document.addEventListener('keydown', (e) => {
+      const key = e.key;
+      if (['ArrowDown', 'ArrowRight', 'PageDown', ' '].includes(key)) {
+        e.preventDefault();
+        this.next();
+      } else if (['ArrowUp', 'ArrowLeft', 'PageUp'].includes(key)) {
+        e.preventDefault();
+        this.prev();
+      } else if (key === 'Home') {
+        e.preventDefault();
+        this.goTo(0);
+      } else if (key === 'End') {
+        e.preventDefault();
+        this.goTo(this.total - 1);
+      } else if (/^[1-9]$/.test(key)) {
+        const n = parseInt(key, 10) - 1;
+        if (n < this.total) {
+          e.preventDefault();
+          this.goTo(n);
+        }
+      }
+    });
+  }
+
+  setupTouchNav() {
+    let startY = null;
+    document.addEventListener('touchstart', (e) => {
+      startY = e.touches[0].clientY;
+    }, { passive: true });
+    document.addEventListener('touchend', (e) => {
+      if (startY === null) return;
+      const dy = e.changedTouches[0].clientY - startY;
+      if (Math.abs(dy) > 60) {
+        if (dy < 0) this.next();
+        else this.prev();
+      }
+      startY = null;
+    }, { passive: true });
+  }
+
+  goTo(i) {
+    if (i < 0 || i >= this.total) return;
+    this.slides[i].scrollIntoView({ behavior: 'smooth' });
+  }
+  next() { this.goTo(Math.min(this.currentIndex + 1, this.total - 1)); }
+  prev() { this.goTo(Math.max(this.currentIndex - 1, 0)); }
+
+  updateProgress() {
+    const pct = ((this.currentIndex + 1) / this.total) * 100;
+    this.progressBar.style.width = pct + '%';
+    this.navDots.forEach((d, i) => d.classList.toggle('active', i === this.currentIndex));
+    const pad = (n) => String(n).padStart(2, '0');
+    this.slideCount.textContent = `${pad(this.currentIndex + 1)} / ${pad(this.total)}`;
+  }
+
+  updateChromeForCurrent() {
+    const isDark = this.slides[this.currentIndex].classList.contains('on-blue');
+    this.body.classList.toggle('on-dark-slide', isDark);
+  }
 }
-window.addEventListener('scroll', onScroll, { passive:true });
-onScroll();
+
+document.addEventListener('DOMContentLoaded', () => new SlidePresentation());
 </script>
+
 </body>
 </html>
