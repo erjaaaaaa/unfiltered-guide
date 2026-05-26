@@ -687,25 +687,31 @@ body.on-dark-slide .nav-dot.active { background: var(--gold); opacity: 1; }
    CALLOUT + FOOD
    ============================================================ */
 .callout {
+  display: grid;
+  grid-template-columns: clamp(160px, 18vw, 220px) 1fr;
+  gap: clamp(1rem, 2vw, 1.75rem);
+  align-items: center;
   padding: clamp(1rem, 1.6vh, 1.3rem) clamp(1.1rem, 2vw, 1.5rem);
-  background: var(--tint);
-  border-left: 4px solid var(--cobalt);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
   margin-bottom: clamp(0.85rem, 1.6vh, 1.3rem);
 }
 .callout .label {
   font-family: var(--f-mono);
   font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   color: var(--cobalt);
   text-transform: uppercase;
-  display: block;
-  margin-bottom: 0.5rem;
 }
 .callout-body {
-  font-size: 0.96rem;
+  font-size: 0.94rem;
   line-height: 1.55;
-  color: var(--deep);
+  color: var(--ink);
+}
+@media (max-width: 720px) {
+  .callout { grid-template-columns: 1fr; gap: 0.4rem; }
 }
 
 .food-grid {
@@ -891,7 +897,7 @@ body.on-dark-slide .nav-dot.active { background: var(--gold); opacity: 1; }
 
 .support-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: clamp(0.75rem, 1.5vw, 1.25rem);
 }
 .support-card {
@@ -942,39 +948,38 @@ body.on-dark-slide .nav-dot.active { background: var(--gold); opacity: 1; }
   text-transform: uppercase;
 }
 
-.meeting-banner {
+/* Meeting point — now a third card in the support grid */
+.meeting-card {
   background: var(--deep);
   border: 1px solid var(--line-on-blue);
   border-left: 4px solid var(--gold);
-  padding: clamp(1.1rem, 2vw, 1.6rem);
-  display: flex; align-items: center;
-  gap: clamp(1.5rem, 3vw, 2.5rem);
-  flex-wrap: wrap;
+  padding: clamp(1rem, 1.8vw, 1.4rem);
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease);
 }
-.meeting-banner-text { flex: 1; min-width: 200px; }
-.meeting-banner .label {
+.meeting-card:hover { transform: translateY(-2px); }
+.meeting-card .role {
   font-family: var(--f-mono);
   font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.22em;
   color: var(--gold);
   text-transform: uppercase;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
 }
-.meeting-banner .name {
+.meeting-card .name {
   font-family: var(--f-sans);
-  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
   font-weight: 700;
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.025em;
   color: var(--paper);
+  margin-bottom: 0.3rem;
 }
-.meeting-banner .addr {
+.meeting-card .addr {
   font-family: var(--f-mono);
   font-size: 0.85rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   color: var(--tint);
-  margin-top: 0.4rem;
 }
 
 /* ============================================================
@@ -1060,10 +1065,13 @@ body.on-dark-slide .nav-dot.active { background: var(--gold); opacity: 1; }
   .rest-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(5, 1fr); }
   .stat-grid { grid-template-columns: 1fr; }
   .taxi-grid { grid-template-columns: 1fr; }
-  .support-grid { grid-template-columns: 1fr; }
+  .support-grid { grid-template-columns: 1fr 1fr; }
   .whatsapp-cta { grid-template-columns: 1fr; }
   .sponsors-grid { grid-template-columns: 1fr; }
   .food-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .support-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
   .rest-grid { grid-template-columns: 1fr; grid-template-rows: auto; overflow-y: auto; }
@@ -1669,11 +1677,8 @@ body.on-dark-slide .nav-dot.active { background: var(--gold); opacity: 1; }
         <div class="phone"><a href="https://wa.me/37126727870" target="_blank" rel="noopener">+371 26 727 870</a></div>
         <div class="channel">For one-on-one assistance</div>
       </div>
-    </div>
-
-    <div class="meeting-banner reveal">
-      <div class="meeting-banner-text">
-        <div class="label">Meeting Point · If All Else Fails</div>
+      <div class="meeting-card reveal">
+        <div class="role">Meeting Point · If All Else Fails</div>
         <div class="name">LOWINE</div>
         <div class="addr">Dzirnavu 43 · Rīga</div>
       </div>
