@@ -719,7 +719,14 @@ body.on-dark-slide .nav-dot.active { background: var(--gold); opacity: 1; }
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(0.85rem, 1.5vw, 1.5rem);
   margin-top: 1rem;
+  margin-bottom: clamp(1rem, 2vh, 1.6rem);
+  flex: 1;                       /* grow to take available space */
+  min-height: clamp(180px, 28vh, 280px);
 }
+.food-card {
+  display: flex; flex-direction: column;
+}
+.food-card p { margin-top: auto; }
 .food-card {
   background: #fff;
   border: 1px solid var(--line);
@@ -1114,20 +1121,6 @@ body.on-dark-slide .nav-dot.active { background: var(--gold); opacity: 1; }
         it's a <span class="gold">correction</span> of an industrial mistake."
       </p>
       <cite class="manifesto-cite">— UNFILTERED Manifesto</cite>
-    </div>
-    <div class="cover-meta">
-      <div>
-        <div class="k">Edition</div>
-        <div class="v">01 <span class="accent">/ 2026</span></div>
-      </div>
-      <div>
-        <div class="k">Festival Dates</div>
-        <div class="v">29 — 30 May</div>
-      </div>
-      <div>
-        <div class="k">Venue</div>
-        <div class="v">VEF Kvartāls · Rīga</div>
-      </div>
     </div>
   </div>
 </section>
@@ -1646,7 +1639,7 @@ body.on-dark-slide .nav-dot.active { background: var(--gold); opacity: 1; }
     <div class="opener reveal">
       <div class="chapter-num">08</div>
       <div class="opener-text">
-        <div class="chapter-tag"><span class="dot"></span> See you in Rīga · Fin.</div>
+        <div class="chapter-tag"><span class="dot"></span> See you in Rīga</div>
         <h2 class="closing-headline">See you<br>in <span class="gold">Rīga.</span></h2>
       </div>
     </div>
@@ -1693,7 +1686,7 @@ body.on-dark-slide .nav-dot.active { background: var(--gold); opacity: 1; }
     <div class="opener reveal">
       <div class="chapter-num">09</div>
       <div class="opener-text">
-        <div class="chapter-tag"><span class="dot"></span> Thank you · Edition 01</div>
+        <div class="chapter-tag"><span class="dot"></span> Thank you</div>
         <h2 class="chapter-title">Sponsors &amp; <span class="accent">supporters.</span></h2>
       </div>
     </div>
@@ -1714,7 +1707,7 @@ body.on-dark-slide .nav-dot.active { background: var(--gold); opacity: 1; }
       </div>
       <div class="sponsor-card reveal">
         <h3>SEO VILLAGE</h3>
-        <p>Powers our digital visibility, ensuring our message reaches natural wine lovers across the region.</p>
+        <p>A calm lakeside escape with a modern SPA, chef-led restaurant, walking paths, and interiors designed for less noise and more presence.</p>
       </div>
       <div class="sponsor-card reveal">
         <h3>LOWINE</h3>
