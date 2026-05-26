@@ -1058,7 +1058,7 @@ body.on-dark-slide .nav-dot.active { background: var(--gold); opacity: 1; }
   .rest-card { padding: clamp(0.6rem, 1vw, 0.9rem); }
   .event-row { padding: clamp(0.75rem, 1.4vh, 1.1rem) clamp(0.95rem, 1.7vw, 1.3rem); }
 }
-@media (max-height: 720px) {
+@media (max-height: 680px) {
   :root { --pad: clamp(1rem, 3vw, 2.5rem); --pad-top: clamp(2.5rem, 5vh, 3.5rem); }
   .nav-dots { display: none; }
   .opener { margin-bottom: 0.85rem; padding-bottom: 0.7rem; }
@@ -1086,6 +1086,136 @@ body.on-dark-slide .nav-dot.active { background: var(--gold); opacity: 1; }
   .cover-meta { grid-template-columns: 1fr; gap: 0.85rem; }
   .opener { grid-template-columns: 1fr; gap: 0.4rem; align-items: start; }
   .chapter-num { font-size: 2.3rem; }
+}
+
+@media (max-width: 700px) {
+  :root {
+    --pad: clamp(1.25rem, 6vw, 1.75rem);
+    --pad-top: clamp(4.25rem, 9vh, 5rem);
+  }
+
+  html,
+  body {
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+  }
+
+  html { scroll-snap-type: none; }
+  body { overflow-y: auto; }
+
+  .nav-dots,
+  .keyboard-hint,
+  .slide-count {
+    display: none !important;
+  }
+
+  .slide {
+    width: 100%;
+    height: auto;
+    min-height: 100svh;
+    overflow: visible;
+    scroll-snap-align: none;
+  }
+
+  .slide-content {
+    height: auto;
+    min-height: 100svh;
+    overflow: visible;
+    padding: var(--pad-top) var(--pad) clamp(2.75rem, 8vh, 4rem);
+  }
+
+  .cover .slide-content {
+    min-height: 100svh;
+    justify-content: space-between;
+    gap: clamp(4rem, 18vh, 8rem);
+  }
+
+  .cover .wordmark { width: min(70vw, 260px); }
+  .cover .manifesto { margin-top: auto; }
+  .cover .manifesto-quote {
+    font-size: clamp(1.25rem, 7vw, 1.75rem);
+    line-height: 1.16;
+  }
+
+  .opener {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    align-items: start;
+  }
+
+  .chapter-num { font-size: clamp(2.2rem, 14vw, 3.4rem); }
+  .chapter-tag {
+    flex-wrap: wrap;
+    line-height: 1.45;
+    letter-spacing: 0.16em;
+  }
+  .chapter-title { font-size: clamp(1.75rem, 8.5vw, 2.5rem); }
+  .section-lede,
+  .note-body { font-size: clamp(1rem, 4.5vw, 1.08rem); }
+
+  .stat-grid,
+  .taxi-grid,
+  .food-grid,
+  .support-grid,
+  .sponsors-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rest-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    overflow: visible;
+    flex: none;
+    min-height: 0;
+  }
+
+  .rest-card { min-height: auto; }
+
+  .event-row {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+  .event-row .time { padding-top: 0; }
+
+  .event-row .meta,
+  .rest-card .contact,
+  .support-card .phone,
+  .meeting-card .addr,
+  .whatsapp-cta p {
+    overflow-wrap: anywhere;
+  }
+
+  .dj-row {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+    overflow: visible;
+  }
+  .dj-row .kind {
+    text-align: left;
+    justify-self: start;
+  }
+
+  .whatsapp-cta { grid-template-columns: 1fr; }
+  .whatsapp-cta .join-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .closing-headline { font-size: clamp(3rem, 16vw, 5rem); }
+  .sponsors-page .slide-content,
+  .closing .slide-content,
+  .food-slide .slide-content {
+    justify-content: flex-start;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1734,6 +1864,7 @@ class SlideDeck {
     this.progressBar = document.getElementById('progressBar');
     this.dotsContainer = document.getElementById('navDots');
     this.counter = document.getElementById('slideCount');
+    this.deckQuery = window.matchMedia('(min-width: 701px)');
 
     this.buildDots();
     this.observeSlides();
@@ -1754,21 +1885,28 @@ class SlideDeck {
     this.dots = Array.from(this.dotsContainer.children);
   }
 
+  isDeckMode() {
+    return this.deckQuery.matches;
+  }
+
   observeSlides() {
     const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.intersectionRatio >= 0.5) {
-          entry.target.classList.add('visible');
-          this.currentIndex = this.slides.indexOf(entry.target);
-          this.update();
-        }
-      });
-    }, { threshold: [0.5] });
+      const visible = entries
+        .filter(entry => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      if (this.isDeckMode() && visible.intersectionRatio < 0.5) return;
+
+      visible.target.classList.add('visible');
+      this.currentIndex = this.slides.indexOf(visible.target);
+      this.update();
+    }, { threshold: [0.05, 0.5] });
     this.slides.forEach(s => io.observe(s));
   }
 
   bindKeyboard() {
     document.addEventListener('keydown', (e) => {
+      if (!this.isDeckMode()) return;
       const k = e.key;
       if (['ArrowDown', 'ArrowRight', 'PageDown', ' '].includes(k)) {
         e.preventDefault(); this.next();
@@ -1788,9 +1926,11 @@ class SlideDeck {
   bindTouch() {
     let startY = null;
     document.addEventListener('touchstart', (e) => {
+      if (!this.isDeckMode()) return;
       startY = e.touches[0].clientY;
     }, { passive: true });
     document.addEventListener('touchend', (e) => {
+      if (!this.isDeckMode()) return;
       if (startY === null) return;
       const dy = e.changedTouches[0].clientY - startY;
       if (Math.abs(dy) > 60) {
@@ -1813,7 +1953,8 @@ class SlideDeck {
     this.dots.forEach((d, i) => d.classList.toggle('active', i === this.currentIndex));
     const pad = (n) => String(n).padStart(2, '0');
     this.counter.textContent = `${pad(this.currentIndex + 1)} / ${pad(this.total)}`;
-    const isDark = this.slides[this.currentIndex].classList.contains('on-blue');
+    const currentSlide = this.slides[this.currentIndex] || this.slides[0];
+    const isDark = currentSlide.classList.contains('on-blue');
     this.body.classList.toggle('on-dark-slide', isDark);
   }
 }
